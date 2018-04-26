@@ -1,6 +1,7 @@
 import sys
 import psycopg2
 
+
 class psql_helpers:
     def __init__(self):
         con_str = "dbname ='zagi' " \
