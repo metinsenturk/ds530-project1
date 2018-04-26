@@ -16,15 +16,11 @@ import os
 
 class dynamodb_helpers:
     def __init__(self):
-        a_c_c_e_s_s__k_e_y = 'AKIAIBBRXQ4FUMMEHIEQ'
-        s_e_c_r_e_t__k_e_y = 'LGlXz4iUWjHYsl7zI9uWVNXDy0FYkT92tfgTKTy4'
-        r_e_g_i_o_n__n_a_m_e = 'us-east-1'
 
-        self.conn = boto3.client('dynamodb',
-                                 endpoint_url='http://localhost:8000/',
-                                 aws_access_key_id=a_c_c_e_s_s__k_e_y,
-                                 aws_secret_access_key=s_e_c_r_e_t__k_e_y,
-                                 region_name=r_e_g_i_o_n__n_a_m_e)
+        self.conn = boto3.client(
+            'dynamodb',
+            endpoint_url='http://localhost:8000/'
+        )
 
     def batch_write(self, table_name, items):
         """
@@ -35,7 +31,7 @@ class dynamodb_helpers:
         """
         dynamodb = self.conn
 
-        table = dynamodb.batch_writer()
+        response = dynamodb.batch_writer()
 
         return True
 

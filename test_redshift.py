@@ -1,5 +1,3 @@
-import sys
-
 import boto3 as boto
 
 cluster_identifier = 'machin-rs-test'
@@ -7,11 +5,7 @@ master_username = 'rsroot'
 master_password = '367Rabbit'
 db_user = 'rsuser'
 
-client = boto.client(
-    'redshift',
-    aws_access_key_id='AKIAJEV3SIIEIH3NMS5A',
-    aws_secret_access_key='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'
-)
+client = boto.client('redshift')
 
 # delete cluster
 response = client.delete_cluster(

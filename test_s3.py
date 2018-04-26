@@ -4,11 +4,7 @@ import boto3 as boto
 
 bucket_name = 'machin-s3-buckets-test'
 # init aws
-client = boto.client(
-    's3',
-    aws_access_key_id='AKIAJEV3SIIEIH3NMS5A',
-    aws_secret_access_key='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'
-)
+client = boto.client('s3')
 
 # list buckets
 response = client.list_buckets()
