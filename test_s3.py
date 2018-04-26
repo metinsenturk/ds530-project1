@@ -1,38 +1,62 @@
+import json
+from sys import stdin
 import boto3 as boto
 
-# credentials
-session = boto.Session()
-credentials = session.get_credentials()
-credentials = credentials.get_frozen_credentials()
-
+bucket_name = 'machin-s3-buckets-test'
 # init aws
-client = boto.client('s3')
-
-# create bucket
-response = client.create_bucket(
-    Bucket='test-bucket'
+client = boto.client(
+    's3',
+    aws_access_key_id='AKIAJEV3SIIEIH3NMS5A',
+    aws_secret_access_key='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'
 )
-
-if response['Location']:
-    print("success")
-
-# put object in s3
-f = open('product.csv', 'rb')
-response = client.put_object(
-    ACL='private',
-    Key='tests/product.csv',
-    Bucket='product',
-    Body=''
-)
-
-if response['RequestCharged']:
-    print('success')
 
 # list buckets
 response = client.list_buckets()
-
 buckets = response['Buckets']
 
 if len(buckets) > 0:
     for bucket in buckets:
         print(bucket)
+
+# create bucket
+for bucket in buckets:
+    if bucket['Name'] != 'machin-s3-buckets-test':
+        response = client.create_bucket(
+            Bucket='machin-s3-buckets-test'
+        )
+
+        if response['Location']:
+            print("success")
+
+# put object
+response = client.put_object(
+    Key='tests/product4.csv',
+    Bucket=bucket_name,
+    Body=open('product.csv', 'rb')
+)
+
+# delete object
+response = client.delete_object(
+    Key='tests/product2.csv',
+    Bucket=bucket_name
+)
+
+# get object
+response = client.get_object(
+    Key='tests/product.csv',
+    Bucket=bucket_name
+)
+obj = response['Body'].read()
+print((obj).decode('utf-8'))
+
+# list objects
+response = client.list_objects(
+    Bucket=bucket_name
+)
+objects = response['Contents']
+
+if len(objects) > 0:
+    for obj in objects:
+        print(obj)
+
+print("success")
