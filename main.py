@@ -5,20 +5,64 @@ import helpers.redshift as r
 
 def main():
     try:
-        s3 = s.S3()
-        s3.bucket_name = 'machin-ds530'
+        # tables for databases
+        zagi_table_names = ['category', 'customer', 'product', 'region',
+                            'salestransaction', 'soldvia', 'store', 'vendor']
+        homeaway_table_names = ['apartment', 'building', 'cleaning', 'corpclient',
+                                'inspecting', 'inspector', 'manager', 'managerphone', 'staffmember']
 
+        # from local to upload s3
+        psql_s3('zagi', zagi_table_names)
+        psql_s3('homeaway', homeaway_table_names)
+
+        # parameters for redshift cluster
+        master_username = 'machinroot'
+        master_password = '367Rabbit'
+        cluster_identifier = 'machindw'
+        dbname = 'dev'
+
+        # creating cluster if not exists
         redshift = r.Redshift()
-        cluster = redshift.create_cluster('machindw', 'exampledw', 'machinroot', '367Rabbit')
-        machindw = p.PSQL('tickit', cluster['Endpoint']['Address'], '5439', 'machinroot', '367Rabbit')
+        redshift.create_cluster(cluster_identifier, dbname, master_username, master_password)
 
-        print(machindw.version())
-        print(machindw.get_databases())
+        # waiting cluster to become available
+        redshift.waiter(cluster_identifier, 0)
+        cluster = redshift.describe_cluster(cluster_identifier)
 
-        # copying
-        machindw.copy('customer', 'zagi/{}.csv'.format('customer'))
+        # copying s3 to redshift
+        s3_redshift('zagi', zagi_table_names, cluster, master_username, master_password)
+        s3_redshift('homeaway', homeaway_table_names, cluster, master_username, master_password)
 
         print("success")
+    except Exception as e:
+        print(e)
+
+
+def psql_s3(dbname, table_list):
+    try:
+        s3 = s.S3()
+        s3.bucket_name = 'machin-ds530'
+        db = p.PSQL(dbname, 'localhost')
+
+        for table_name in table_list:
+            # write data to csv files
+            db.table_to_csv(table_name)
+
+            # s3 upload
+            file = open('{}.csv'.format(table_name), 'rb')
+            s3.put_object(file, '{}/{}.csv'.format(dbname, table_name))
+    except Exception as e:
+        print(e)
+    finally:
+        db.conn.close()
+
+
+def s3_redshift(dbname, table_list, cluster, master_username, master_password):
+    try:
+        machindw = p.PSQL(dbname, cluster['Endpoint']['Address'], '5439', master_username, master_password)
+        for table_name in table_list:
+            s3_path = '{}/{}.csv'.format(dbname, table_name)
+            machindw.copy(table_name, s3_path)
     except Exception as e:
         print(e)
     finally:
@@ -26,38 +70,12 @@ def main():
             machindw.conn.close()
 
 
-def need():
+def purge_everything(cluster_identifier, bucket_name):
+    redshift = r.Redshift()
+    redshift.delete_cluster(cluster_identifier)
+
     s3 = s.S3()
-    s3.bucket_name = 'machin-ds530'
-    zagi = p.PSQL('zagi', 'localhost')
-
-    zagi_table_names = ['category', 'customer', 'product', 'region',
-                        'salestransaction', 'soldvia', 'store', 'vendor']
-
-    for table_name in zagi_table_names:
-        # write data to csv files
-        zagi.table_to_csv(table_name)
-
-        # s3 upload
-        file = open('{}.csv'.format(table_name), 'rb')
-        s3.put_object(file, 'zagi/{}.csv'.format(table_name))
-
-    zagi.conn.close()
-
-
-def junk():
-    s3 = s.S3()
-    homeaway = p.PSQL('homeaway', 'localhost')
-    homeaway_table_names = ['apartment', 'building', 'cleaning', 'corpclient',
-                            'inspecting', 'inspector', 'manager', 'managerphone', 'staffmember']
-
-    for table_name in homeaway_table_names:
-        # write data to csv files
-        homeaway.table_to_csv(table_name)
-
-        # s3 upload
-        file = open('{}'.format(table_name), 'rb')
-        s3.put_object(file, 'homeaway/{}.csv'.format(table_name))
+    s3.delete_bucket(bucket_name)
 
 
 if __name__ == '__main__':

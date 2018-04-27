@@ -28,6 +28,13 @@ class S3(object):
                 else:
                     return False
 
+    def delete_bucket(self, bucket_name):
+        client = self.client
+
+        response = client.delete_bucket(
+            Bucket=bucket_name
+        )
+
     def list_objects(self, prefix):
         client = self.client
 
@@ -49,8 +56,6 @@ class S3(object):
             Body=file
         )
 
-        return True
-
     def delete_object(self, key):
         client = self.client
 
@@ -58,5 +63,3 @@ class S3(object):
             Key=key,
             Bucket=self.bucket_name
         )
-
-        return True

@@ -6,7 +6,7 @@ class Redshift:
         client = boto3.client('redshift')
         self.client = client
 
-    def describe_clusters(self, cluster_identifier):
+    def describe_cluster(self, cluster_identifier):
         client = self.client
 
         response = client.describe_clusters(

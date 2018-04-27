@@ -16,6 +16,8 @@ class PSQL:
             self.conn = psycopg2.connect(con_str)
             self.conn.autocommit = True
 
+            self.cre
+
     def table_to_csv(self, table_name):
         file_name = "{}.csv".format(table_name)
         query = "select * from {};".format(table_name)
@@ -51,6 +53,15 @@ class PSQL:
 
         return databases
 
+    def create_database(self, dbname):
+        cursor = self.conn.cursor()
+
+        cursor.execute("create database %s", (dbname,))
+        databases = cursor.fetchall()
+        cursor.close()
+
+        return databases
+
     def execute(self, query):
         cursor = self.conn.cursor()
 
@@ -66,18 +77,18 @@ class PSQL:
         cursor.execute(open(filepath, 'r').read())
         cursor.close()
 
-    def copy(self, table, s3_key):
+    def copy(self, table, s3_path):
         cursor = self.conn.cursor()
 
         creds = boto3.session.Session().get_credentials()
         aws_access_key_id = creds.access_key
         aws_secret_access_key = creds.secret_key
 
-        sql = """copy {}.{} from 's3://machin-ds530/{}'\
+        sql = """copy {}.{} from '{}'\
                 credentials \
                 'aws_access_key_id={};aws_secret_access_key={}' \
                 DELIMITER ',' ACCEPTINVCHARS EMPTYASNULL ESCAPE COMPUPDATE OFF;commit;""" \
-            .format('public', table, s3_key, aws_access_key_id, aws_secret_access_key)
+            .format('public', table, s3_path, aws_access_key_id, aws_secret_access_key)
 
         cursor.execute(sql)
         cursor.close()
