@@ -37,9 +37,8 @@ class PSQL:
         aws_access_key_id = 'AKIAIBBRXQ4FUMMEHIEQ'
         aws_secret_access_key = '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'
 
-        query = f"copy {table} from s3://machin-ds530/'{s3_key}'\
-                credentials \
-                'aws_access_key_id={aws_access_key_id};aws_secret_access_key={aws_secret_access_key}' \
-                DELIMITER '|' ACCEPTINVCHARS EMPTYASNULL ESCAPE COMPUPDATE OFF;commit;"
+        query = "copy {} from 's3://mybucket/{}' " \
+                "credentials 'aws_access_key_id={};aws_secret_access_key={};'" \
+            .format(table, s3_key, aws_access_key_id, aws_secret_access_key)
 
         cursor.execute(query)
