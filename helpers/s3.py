@@ -16,7 +16,7 @@ class S3(object):
         buckets = response['Buckets']
 
         if bucket_name not in buckets:
-            if self.bucket_name is not bucket_name:
+            if self.bucket_name != bucket_name:
                 response = client.create_bucket(
                     Bucket=bucket_name
                 )
@@ -26,6 +26,18 @@ class S3(object):
                     return True
                 else:
                     return False
+
+    def list_objects(self, prefix):
+        client = self.client
+
+        response = client.list_objects(
+            Bucket=self.bucket_name,
+            Prefix=prefix,
+        )
+
+        objects = response['Contents']
+        if len(objects) > 0:
+            return objects
 
     def put_object(self, file, key):
         client = self.client

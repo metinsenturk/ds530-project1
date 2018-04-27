@@ -1,54 +1,46 @@
-import helpers.dynamodb_helpers as dy
-import helpers.psql_helpers as p
-from random import randint
-import requests
-import json
+import helpers.psql as p
+import helpers.s3 as s
+import helpers.redshift as r
 
 
 def main():
-    dydb_tests()
+    s3 = s.S3()
+    s3.bucket_name = 'machin-ds530'
+
+    redshift = r.Redshift()
+    zagi = p.PSQL('zagi', 'localhost')
+
+    zagi_table_names = ['category', 'customer', 'product', 'region',
+                        'salestransaction', 'soldvia', 'store', 'vendor']
+
+    for table_name in zagi_table_names:
+        # write data to csv files
+        zagi.table_to_csv(table_name)
+
+        # s3 upload
+        file = open('{}.csv'.format(table_name), 'rb')
+        s3.put_object(file, 'zagi/{}.csv'.format(table_name))
+
+    cluster = redshift.create_cluster('machindw', 'machinroot', '367Rabbit')
+
+    machindw = p.PSQL('dev', cluster['Endpoint']['Address'], '5439', 'machinroot', '367Rabbit')
+    machindw.copy(zagi_table_names[0], 'zagi/{}.csv'.format('category'))
 
 
-def psql_tests():
-    """
-    Not Implemented Yet.
-    :return:
-    """
+def junk():
+    s3 = s.S3()
+    homeaway = p.PSQL('homeaway', 'localhost')
+    homeaway_table_names = ['apartment', 'building', 'cleaning', 'corpclient',
+                            'inspecting', 'inspector', 'manager', 'managerphone', 'staffmember']
+
+    for table_name in homeaway_table_names:
+        # write data to csv files
+        homeaway.table_to_csv(table_name)
+
+        # s3 upload
+        file = open('{}'.format(table_name), 'rb')
+        s3.put_object(file, 'homeaway/{}.csv'.format(table_name))
 
 
-def dydb_tests():
-    try:
-        # init the class
-        dydb = dy.dynamodb_helpers()
-
-        # creating a table
-        table_name = 'table' + str(randint(0, 99))
-        table_created = dydb.create_table(table_name)
-        print(table_created)
-
-        # list of tables
-        table_list = dydb.list_tables()
-        print(table_list)
-
-        # delete a table
-        for table in table_list:
-            if table != 'users':
-                dydb.delete_table(table)
-                table_list.remove(table)
-
-        # insert controls
-        if not 'users' in table_list:
-            dydb.create_table('users')
-
-        # get user items
-        items = dydb.scan("users", 10)
-
-        for item in items:
-            print(item)
-
-    except Exception as e:
-        print("Exception: " + str(e))
-
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()
