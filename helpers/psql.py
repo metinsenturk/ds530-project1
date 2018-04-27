@@ -1,6 +1,6 @@
 import csv
 import psycopg2
-import os
+import boto3
 
 
 class PSQL:
@@ -69,8 +69,9 @@ class PSQL:
     def copy(self, table, s3_key):
         cursor = self.conn.cursor()
 
-        aws_access_key_id = 'AKIAIBBRXQ4FUMMEHIEQ'
-        aws_secret_access_key = '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'
+        creds = boto3.session.Session().get_credentials()
+        aws_access_key_id = creds.access_key
+        aws_secret_access_key = creds.secret_key
 
         sql = """copy {}.{} from 's3://machin-ds530/{}'\
                 credentials \

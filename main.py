@@ -14,10 +14,9 @@ def main():
 
         print(machindw.version())
         print(machindw.get_databases())
-        print(machindw.execute_file('resources/zagdb.sql'))
 
         # copying
-        machindw.copy('category', 'zagi/{}.csv'.format('category'))
+        machindw.copy('customer', 'zagi/{}.csv'.format('customer'))
 
         print("success")
     except Exception as e:

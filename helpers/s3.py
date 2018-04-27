@@ -1,4 +1,5 @@
 import boto3 as boto
+from botocore.credentials import InstanceMetadataProvider, InstanceMetadataFetcher
 
 
 class S3(object):
