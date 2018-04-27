@@ -11,10 +11,10 @@ def main():
         # tables for databases
         zagi_table_names = ['category', 'customer', 'product', 'region',
                             'salestransaction', 'soldvia', 'store', 'vendor']
-        print("tables in zagi %s" % zagi_table_names)
+        print("tables in zagi: %s" % zagi_table_names)
         homeaway_table_names = ['apartment', 'building', 'cleaning', 'corpclient',
                                 'inspecting', 'inspector', 'manager', 'managerphone', 'staffmember']
-        print("tables in homeaway %s" % homeaway_table_names)
+        print("tables in homeaway: %s" % homeaway_table_names)
 
         # from local to upload s3
         psql_s3('zagi', zagi_table_names, bucket_name)
@@ -35,15 +35,15 @@ def main():
 
         # waiting cluster to become available
         redshift.waiter(cluster_identifier, 0)
-        print("redshift cluster initilalization completed")
+        print("redshift cluster initilalization completed.")
         cluster = redshift.describe_cluster(cluster_identifier)
         print("redshift cluster: %s" % cluster['ClusterIdentifier'])
 
         # copying s3 to redshift
         s3_redshift('zagi', zagi_table_names, bucket_name, cluster, master_username, master_password)
-        print("zagi tables transferred from s3 to redshift")
+        print("zagi tables transferred from s3 to redshift.")
         s3_redshift('homeaway', homeaway_table_names, bucket_name, cluster, master_username, master_password)
-        print("homeaway tables transferred from s3 to redshift")
+        print("homeaway tables transferred from s3 to redshift.")
 
         print("success")
     except Exception as e:
@@ -74,6 +74,7 @@ def psql_s3(dbname, table_list, bucket_name):
 def s3_redshift(dbname, table_list, bucket_name, cluster, master_username, master_password):
     try:
         machindw = p.PSQL('dev', cluster['Endpoint']['Address'], '5439', master_username, master_password)
+        print("---- connected to database: %s" % 'dev')
 
         # create database
         databases = machindw.get_databases()
@@ -83,37 +84,51 @@ def s3_redshift(dbname, table_list, bucket_name, cluster, master_username, maste
 
         # drop current connection and create new
         machindw = p.PSQL(dbname, cluster['Endpoint']['Address'], '5439', master_username, master_password)
+        print("---- connected to database: %s" % dbname)
 
         if len(machindw.get_tables()) == 0:
             # create db tables
             machindw.execute_file('resources/{}db.sql'.format(dbname))
+            print("---- tables created for: %s" % dbname)
 
             # copy data
             for table_name in table_list:
                 s3_path = 's3://{}/{}/{}.csv'.format(bucket_name, dbname, table_name)
                 machindw.copy(table_name, s3_path)
+                print("---- data uploaded to: %s" % table_name)
 
             if dbname == 'zagi':
                 # create dw tables
                 machindw.execute_file('resources/{}dw.sql'.format(dbname))
+                print("---- tables (dw) created for: %s" % dbname)
     except Exception as e:
         print(e)
     finally:
         if machindw.conn is not None:
             machindw.conn.close()
+            print("---- connection to database closed.")
 
 
 def purge_everything(cluster_identifier, bucket_name):
+    print("purge started.")
     redshift = r.Redshift()
     redshift.delete_cluster(cluster_identifier)
+
+    redshift.waiter(cluster_identifier, 1)
+    print("purged: redshift cluster: %s" % cluster_identifier)
 
     s3 = s.S3(bucket_name)
     objts = s3.list_objects()
     for obj in objts:
         s3.delete_object(obj['Key'])
+        print("purged: s3 object: %s" % obj['Key'])
+
     s3.delete_bucket(bucket_name)
+    print("purged: s3 bucket: %s" % bucket_name)
+
+    print("good bye!")
 
 
 if __name__ == '__main__':
-    # purge_everything('machindw', bucket_name)
+    # purge_everything('machindw', 'machin-s3-default')
     main()
