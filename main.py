@@ -2,11 +2,12 @@ import helpers.s3 as s
 import helpers.psql as p
 import helpers.redshift as r
 
-bucket_name = 'machin-ds530'
-
 
 def main():
     try:
+        # bucket name
+        bucket_name = 'machin-s3-default'
+
         # tables for databases
         zagi_table_names = ['category', 'customer', 'product', 'region',
                             'salestransaction', 'soldvia', 'store', 'vendor']
@@ -14,8 +15,8 @@ def main():
                                 'inspecting', 'inspector', 'manager', 'managerphone', 'staffmember']
 
         # from local to upload s3
-        psql_s3('zagi', zagi_table_names)
-        psql_s3('homeaway', homeaway_table_names)
+        psql_s3('zagi', zagi_table_names, bucket_name)
+        psql_s3('homeaway', homeaway_table_names, bucket_name)
 
         # parameters for redshift cluster
         master_username = 'machinroot'
@@ -32,18 +33,19 @@ def main():
         cluster = redshift.describe_cluster(cluster_identifier)
 
         # copying s3 to redshift
-        s3_redshift('zagi', zagi_table_names, cluster, master_username, master_password)
-        s3_redshift('homeaway', homeaway_table_names, cluster, master_username, master_password)
+        s3_redshift('zagi', zagi_table_names, bucket_name, cluster, master_username, master_password)
+        s3_redshift('homeaway', homeaway_table_names, bucket_name, cluster, master_username, master_password)
 
         print("success")
     except Exception as e:
         print(e)
 
 
-def psql_s3(dbname, table_list):
+def psql_s3(dbname, table_list, bucket_name):
+    s3 = s.S3(bucket_name)
+    s3.create_bucket(bucket_name)
+
     try:
-        s3 = s.S3()
-        s3.bucket_name = bucket_name
         db = p.PSQL(dbname, 'localhost')
 
         for table_name in table_list:
@@ -59,7 +61,7 @@ def psql_s3(dbname, table_list):
         db.conn.close()
 
 
-def s3_redshift(dbname, table_list, cluster, master_username, master_password):
+def s3_redshift(dbname, table_list, bucket_name, cluster, master_username, master_password):
     try:
         machindw = p.PSQL('dev', cluster['Endpoint']['Address'], '5439', master_username, master_password)
 
@@ -99,5 +101,5 @@ def purge_everything(cluster_identifier, bucket_name):
 
 
 if __name__ == '__main__':
-    purge_everything('machindw', bucket_name)
-    # main()
+    # purge_everything('machindw', bucket_name)
+    main()

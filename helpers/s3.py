@@ -1,29 +1,34 @@
 import boto3 as boto
-from botocore.credentials import InstanceMetadataProvider, InstanceMetadataFetcher
-
+import botocore
 
 class S3(object):
-    bucket_name = 'machin-ds530'
+    bucket_name = ''
 
-    def __init__(self):
+    def __init__(self, bucket_name):
         # init aws
         client = boto.client('s3')
         self.client = client
+        self.bucket = bucket_name
 
     def create_bucket(self, bucket_name):
         client = self.client
 
-        response = client.list_buckets()
-        buckets = response['Buckets']
+        try:
+            response = client.head_bucket(
+                Bucket=bucket_name
+            )
+        except botocore.exceptions.ClientError as e:
+            error_code = int(e.response['Error']['Code'])
 
-        if bucket_name not in buckets:
-            if self.bucket_name != bucket_name:
+            if error_code == 404:
+                response = client.list_buckets()
+                buckets = response['Buckets']
+
                 response = client.create_bucket(
                     Bucket=bucket_name
                 )
 
                 if response['Location']:
-                    self.bucket_name = bucket_name
                     return True
                 else:
                     return False

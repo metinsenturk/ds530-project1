@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="0b23f99e-5a02-4840-906d-1578db7b70d1" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/helpers/redshift.py" beforeDir="false" afterPath="$PROJECT_DIR$/helpers/redshift.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/helpers/s3.py" beforeDir="false" afterPath="$PROJECT_DIR$/helpers/s3.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
@@ -27,8 +26,8 @@
       <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="384">
-              <caret line="101" selection-start-line="101" selection-end-line="101" />
+            <state relative-caret-position="75">
+              <caret line="8" column="41" selection-start-line="8" selection-start-column="41" selection-end-line="8" selection-end-column="41" />
               <folding>
                 <element signature="e#0#22#0" expanded="true" />
               </folding>
@@ -36,29 +35,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="codecs.py" pinned="false" current-in-tab="false">
-        <entry file="file:///Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/codecs.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="258">
-              <caret line="310" selection-start-line="310" selection-end-line="310" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="redshift.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/helpers/redshift.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="344">
-              <caret line="45" column="44" selection-start-line="45" selection-start-column="44" selection-end-line="45" selection-end-column="44" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="s3.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="s3.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/helpers/s3.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="555">
-              <caret line="37" column="4" lean-forward="true" selection-start-line="37" selection-start-column="4" selection-end-line="37" selection-end-column="4" />
+            <state relative-caret-position="344">
+              <caret line="30" column="40" selection-start-line="30" selection-start-column="40" selection-end-line="30" selection-end-column="40" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
               </folding>
@@ -95,9 +76,9 @@
         <option value="$PROJECT_DIR$/helpers/dynamodb_helpers.py" />
         <option value="$PROJECT_DIR$/tests/test_dydb.py" />
         <option value="$PROJECT_DIR$/helpers/psql.py" />
-        <option value="$PROJECT_DIR$/helpers/s3.py" />
-        <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/helpers/redshift.py" />
+        <option value="$PROJECT_DIR$/main.py" />
+        <option value="$PROJECT_DIR$/helpers/s3.py" />
       </list>
     </option>
   </component>
@@ -114,6 +95,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -130,7 +112,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -426,7 +407,14 @@
       <option name="project" value="LOCAL" />
       <updated>1524821076337</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="purge added">
+      <created>1524821743004</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1524821743004</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TodoView">
@@ -442,26 +430,26 @@
     <frame x="0" y="22" width="1440" height="878" extended-state="0" />
     <editor active="true" />
     <layout>
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6325224" visible="true" weight="0.28683835" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3290653" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5007153" side_tool="true" weight="0.33674777" />
-      <window_info x="0" y="0" width="310" height="678" id="Documentation" order="3" sideWeight="0.3674776" side_tool="true" visible="true" weight="0.2832618" />
-      <window_info anchor="bottom" auto_hide="true" id="Run" order="2" weight="0.32010242" />
-      <window_info anchor="bottom" auto_hide="true" id="Version Control" order="7" weight="0.3277849" />
-      <window_info anchor="bottom" id="Python Console" order="8" sideWeight="0.49928468" weight="0.33674777" />
-      <window_info anchor="bottom" id="Terminal" order="9" weight="0.3290653" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6325224" visible="true" weight="0.2832618" />
       <window_info anchor="right" id="R Packages" order="3" weight="0.3297568" />
       <window_info anchor="right" id="R Graphics" order="4" weight="0.3297568" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3290653" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5007153" side_tool="true" weight="0.33674777" />
+      <window_info anchor="bottom" auto_hide="true" id="Version Control" order="7" weight="0.3277849" />
+      <window_info active="true" anchor="bottom" id="Python Console" order="8" sideWeight="0.49928468" visible="true" weight="0.33674777" />
+      <window_info anchor="bottom" auto_hide="true" id="Run" order="2" weight="0.32010242" />
       <window_info id="Structure" order="1" sideWeight="0.50192064" side_tool="true" weight="0.25894135" />
-      <window_info anchor="bottom" auto_hide="true" id="Debug" order="3" sideWeight="0.4993895" weight="0.29449424" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.3290653" />
       <window_info id="Favorites" order="2" sideWeight="0.5016026" side_tool="true" weight="0.25579977" />
+      <window_info anchor="bottom" auto_hide="true" id="Debug" order="3" sideWeight="0.4993895" weight="0.29449424" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info x="0" y="0" width="310" height="678" id="Documentation" order="3" sideWeight="0.3674776" side_tool="true" visible="true" weight="0.2832618" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3290653" />
     </layout>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -514,7 +502,8 @@
     <MESSAGE value="credential bug fix" />
     <MESSAGE value="main presentation completion" />
     <MESSAGE value="s3_to_redshift finished" />
-    <option name="LAST_COMMIT_MESSAGE" value="s3_to_redshift finished" />
+    <MESSAGE value="purge added" />
+    <option name="LAST_COMMIT_MESSAGE" value="purge added" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -527,23 +516,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/helpers/s3.py</url>
-          <line>38</line>
-          <option name="timeStamp" value="25" />
+          <line>23</line>
+          <option name="timeStamp" value="49" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/main.py</url>
-          <line>63</line>
-          <option name="timeStamp" value="42" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/main.py</url>
-          <line>37</line>
-          <option name="timeStamp" value="44" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/main.py</url>
-          <line>91</line>
-          <option name="timeStamp" value="45" />
+          <url>file://$PROJECT_DIR$/helpers/s3.py</url>
+          <line>16</line>
+          <option name="timeStamp" value="50" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -553,78 +532,96 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="46" />
+      <option name="time" value="51" />
     </breakpoint-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateExpression">
       <expression>
-        <expression-string>('dev',) in databases</expression-string>
+        <expression-string>buckets['Buckets'][0]['Name']</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>('dev',) not in databases</expression-string>
+        <expression-string>buckets['Buckets'][0]</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>(dbname,) not in databases</expression-string>
+        <expression-string>buckets['Buckets']</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>databases</expression-string>
+        <expression-string>('machin-s3-default',) in buckets['Buckets']</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>[db for db in databases].__contains__('dev')</expression-string>
+        <expression-string>buckets[Buckets]</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>[db for db in databases].__contains__('zagi')</expression-string>
+        <expression-string>buckets</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>[db for db in databases].__contains__('')</expression-string>
+        <expression-string>buckets[0]</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>[db for db in databases].__contains__('tickit')</expression-string>
+        <expression-string>Buckets[0]</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>[db for db in databases]</expression-string>
+        <expression-string>('machin-s3-default2',) not in buckets</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>0 not in databases</expression-string>
+        <expression-string>'machin-s3-default2' not in buckets</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/helpers/aws_credentials.py">
+    <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="31" selection-start-line="1" selection-start-column="31" selection-end-line="1" selection-end-column="31" />
+        <state relative-caret-position="645">
+          <caret line="45" selection-start-line="45" selection-end-line="45" />
+          <folding>
+            <element signature="e#0#22#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/cli-credentials.csv">
+    <entry file="file://$PROJECT_DIR$/helpers/psql.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="61" lean-forward="true" selection-start-line="1" selection-start-column="21" selection-end-line="1" selection-end-column="61" />
+        <state relative-caret-position="60">
+          <caret line="6" column="8" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/helpers/s3.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="34" lean-forward="true" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/helpers/aws_credentials.py" />
+    <entry file="file://$PROJECT_DIR$/resources/cli-credentials.csv" />
     <entry file="file://$PROJECT_DIR$/tests/test_s3.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="570">
@@ -709,44 +706,10 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test.py" />
-    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/botocore/client.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="611" selection-start-line="611" selection-end-line="611" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/helpers/aws_credentials.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="19" lean-forward="true" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/helpers/psql_helpers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="1" selection-start-column="1" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/helpers/mysql_helpers.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/ds-530-credentials.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="28" lean-forward="true" selection-start-line="1" selection-start-column="28" selection-end-line="1" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/helpers/dynamodb_helpers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="22" column="8" selection-start-line="22" selection-start-column="8" selection-end-line="22" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/helpers/aws_credentials.py" />
+    <entry file="file://$PROJECT_DIR$/helpers/psql_helpers.py" />
+    <entry file="file://$PROJECT_DIR$/resources/ds-530-credentials.csv" />
+    <entry file="file://$PROJECT_DIR$/helpers/dynamodb_helpers.py" />
     <entry file="file:///Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/tokenize.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
@@ -772,9 +735,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="18" column="28" lean-forward="true" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="28" />
-          <folding>
-            <element signature="e#0#12#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -792,16 +752,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/cli-credentials.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="61" selection-start-line="1" selection-start-column="21" selection-end-line="1" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/category.csv">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/cli-credentials.csv" />
     <entry file="file://$PROJECT_DIR$/tests/test_s3.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
@@ -816,9 +767,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2281">
           <caret line="5" column="3" lean-forward="true" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="3" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -826,35 +774,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="598">
           <caret line="59" selection-start-line="59" selection-end-line="59" selection-end-column="14" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/zagdb.sql">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/homeawaydb.sql">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/helpers/psql.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="97" selection-start-line="97" selection-end-line="97" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/helpers/s3.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="37" column="4" lean-forward="true" selection-start-line="37" selection-start-column="4" selection-end-line="37" selection-end-column="4" />
-          <folding>
-            <element signature="e#0#20#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -865,20 +784,47 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/helpers/redshift.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="8" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/helpers/psql.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="6" column="8" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/botocore/client.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="145">
+          <caret line="469" column="56" lean-forward="true" selection-start-line="469" selection-start-column="56" selection-end-line="469" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="101" selection-start-line="101" selection-end-line="101" />
+        <state relative-caret-position="75">
+          <caret line="8" column="41" selection-start-line="8" selection-start-column="41" selection-end-line="8" selection-end-column="41" />
           <folding>
             <element signature="e#0#22#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/helpers/redshift.py">
+    <entry file="file://$PROJECT_DIR$/helpers/s3.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="344">
-          <caret line="45" column="44" selection-start-line="45" selection-start-column="44" selection-end-line="45" selection-end-column="44" />
+          <caret line="30" column="40" selection-start-line="30" selection-start-column="40" selection-end-line="30" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
