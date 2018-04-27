@@ -16,14 +16,12 @@ class PSQL:
             self.conn = psycopg2.connect(con_str)
             self.conn.autocommit = True
 
-            self.cre
-
     def table_to_csv(self, table_name):
         file_name = "{}.csv".format(table_name)
-        query = "select * from {};".format(table_name)
+        query = "select * from %s;"
 
         cursor = self.conn.cursor()
-        cursor.execute(query)
+        cursor.execute(query, (table_name,))
         rows = cursor.fetchall()
 
         with open(file_name, 'w') as f:
@@ -53,14 +51,20 @@ class PSQL:
 
         return databases
 
+    def get_tables(self):
+        cursor = self.conn.cursor()
+
+        cursor.execute("select tablename from pg_tables where schemaname = 'public';")
+        tables = cursor.fetchall()
+        cursor.close()
+
+        return tables
+
     def create_database(self, dbname):
         cursor = self.conn.cursor()
 
-        cursor.execute("create database %s", (dbname,))
-        databases = cursor.fetchall()
+        cursor.execute("create database %s;" % dbname)
         cursor.close()
-
-        return databases
 
     def execute(self, query):
         cursor = self.conn.cursor()

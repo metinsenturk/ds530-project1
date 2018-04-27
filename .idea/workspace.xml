@@ -3,13 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="0b23f99e-5a02-4840-906d-1578db7b70d1" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer.csv" beforeDir="false" afterPath="$PROJECT_DIR$/customer.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/helpers/psql.py" beforeDir="false" afterPath="$PROJECT_DIR$/helpers/psql.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/helpers/redshift.py" beforeDir="false" afterPath="$PROJECT_DIR$/helpers/redshift.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/helpers/s3.py" beforeDir="false" afterPath="$PROJECT_DIR$/helpers/s3.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/salestransaction.csv" beforeDir="false" afterPath="$PROJECT_DIR$/salestransaction.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store.csv" beforeDir="false" afterPath="$PROJECT_DIR$/store.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/zagdb.sql" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -31,8 +27,8 @@
       <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="169">
-              <caret line="21" column="14" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="14" />
+            <state relative-caret-position="384">
+              <caret line="99" selection-start-line="99" selection-end-line="99" />
               <folding>
                 <element signature="e#0#22#0" expanded="true" />
                 <element signature="e#158#285#0" />
@@ -42,23 +38,29 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="s3.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/helpers/s3.py">
+      <file leaf-file-name="codecs.py" pinned="false" current-in-tab="true">
+        <entry file="file:///Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/codecs.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" selection-start-line="10" selection-end-line="10" />
-              <folding>
-                <element signature="e#0#20#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="198">
+              <caret line="310" selection-start-line="310" selection-end-line="310" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="psql.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="redshift.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/helpers/redshift.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="211">
+              <caret line="47" selection-start-line="47" selection-end-line="47" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="psql.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/helpers/psql.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="239">
-              <caret line="58" column="22" lean-forward="true" selection-start-line="58" selection-start-column="22" selection-end-line="58" selection-end-column="22" />
+            <state relative-caret-position="615">
+              <caret line="97" selection-start-line="97" selection-end-line="97" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -96,8 +98,8 @@
         <option value="$PROJECT_DIR$/tests/test_dydb.py" />
         <option value="$PROJECT_DIR$/helpers/redshift.py" />
         <option value="$PROJECT_DIR$/helpers/s3.py" />
-        <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/helpers/psql.py" />
+        <option value="$PROJECT_DIR$/main.py" />
       </list>
     </option>
   </component>
@@ -125,6 +127,11 @@
               <item name="ds530-project1" type="b2602c69:ProjectViewProjectNode" />
               <item name="ds530-project1" type="462c0819:PsiDirectoryNode" />
               <item name="helpers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ds530-project1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ds530-project1" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -412,7 +419,14 @@
       <option name="project" value="LOCAL" />
       <updated>1524811182560</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="main presentation completion">
+      <created>1524815384810</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1524815384810</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TodoView">
@@ -426,21 +440,20 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1440" height="878" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3290653" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5007153" side_tool="true" weight="0.33674777" />
-      <window_info x="0" y="0" width="310" height="678" id="Documentation" order="3" sideWeight="0.36872587" side_tool="true" visible="true" weight="0.2832618" />
+      <window_info x="0" y="0" width="310" height="678" id="Documentation" order="3" sideWeight="0.36842105" side_tool="true" visible="true" weight="0.2832618" />
       <window_info anchor="bottom" auto_hide="true" id="Run" order="2" weight="0.32010242" />
       <window_info anchor="bottom" auto_hide="true" id="Version Control" order="7" weight="0.3277849" />
-      <window_info active="true" anchor="bottom" id="Python Console" order="8" sideWeight="0.49928468" visible="true" weight="0.33674777" />
+      <window_info anchor="bottom" id="Python Console" order="8" sideWeight="0.49928468" weight="0.33674777" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.3290653" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6312741" visible="true" weight="0.2832618" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6315789" visible="true" weight="0.2832618" />
       <window_info anchor="right" id="R Packages" order="3" weight="0.3297568" />
       <window_info anchor="right" id="R Graphics" order="4" weight="0.3297568" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3290653" />
       <window_info id="Structure" order="1" sideWeight="0.50192064" side_tool="true" weight="0.25894135" />
-      <window_info anchor="bottom" auto_hide="true" id="Debug" order="3" sideWeight="0.4993895" weight="0.29449424" />
+      <window_info active="true" anchor="bottom" auto_hide="true" id="Debug" order="3" sideWeight="0.4993895" visible="true" weight="0.29449424" />
       <window_info id="Favorites" order="2" sideWeight="0.5016026" side_tool="true" weight="0.25579977" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -498,7 +511,8 @@
     <MESSAGE value="redshift commands working" />
     <MESSAGE value="main bug fixes and completion" />
     <MESSAGE value="credential bug fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="credential bug fix" />
+    <MESSAGE value="main presentation completion" />
+    <option name="LAST_COMMIT_MESSAGE" value="main presentation completion" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -516,8 +530,18 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main.py</url>
-          <line>18</line>
-          <option name="timeStamp" value="41" />
+          <line>64</line>
+          <option name="timeStamp" value="42" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/main.py</url>
+          <line>38</line>
+          <option name="timeStamp" value="44" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/main.py</url>
+          <line>92</line>
+          <option name="timeStamp" value="45" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -527,53 +551,58 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="42" />
+      <option name="time" value="46" />
     </breakpoint-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateExpression">
       <expression>
-        <expression-string>sql</expression-string>
+        <expression-string>('dev',) in databases</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>cluster['Endpoint']</expression-string>
+        <expression-string>('dev',) not in databases</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>response['Clusters'][0]['ClusterIdentifier']</expression-string>
+        <expression-string>(dbname,) not in databases</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>con_str</expression-string>
+        <expression-string>databases</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>self.bucket_name == bucket_name</expression-string>
+        <expression-string>[db for db in databases].__contains__('dev')</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>self.bucket_name is bucket_name</expression-string>
+        <expression-string>[db for db in databases].__contains__('zagi')</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>self.bucket_name is not bucket_name</expression-string>
+        <expression-string>[db for db in databases].__contains__('')</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>response['Location']</expression-string>
+        <expression-string>[db for db in databases].__contains__('tickit')</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>response['Location'].read()</expression-string>
+        <expression-string>[db for db in databases]</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>0 not in databases</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
@@ -781,13 +810,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/codecs.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="310" selection-start-line="310" selection-end-line="310" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/helpers/dynamodb.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2281">
@@ -797,9 +819,6 @@
           </folding>
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/zagdb.sql">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/test_psql.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -811,6 +830,9 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/zagdb.sql">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/helpers/s3.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -821,17 +843,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/helpers/psql.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="615">
+          <caret line="97" selection-start-line="97" selection-end-line="97" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/homeawaydb.sql">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/helpers/redshift.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="24" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
+        <state relative-caret-position="211">
+          <caret line="47" selection-start-line="47" selection-end-line="47" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="21" column="14" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="14" />
+        <state relative-caret-position="384">
+          <caret line="99" selection-start-line="99" selection-end-line="99" />
           <folding>
             <element signature="e#0#22#0" expanded="true" />
             <element signature="e#158#285#0" />
@@ -840,13 +875,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/helpers/psql.py">
+    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/codecs.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="58" column="22" lean-forward="true" selection-start-line="58" selection-start-column="22" selection-end-line="58" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="198">
+          <caret line="310" selection-start-line="310" selection-end-line="310" />
         </state>
       </provider>
     </entry>
