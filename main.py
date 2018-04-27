@@ -20,7 +20,7 @@ def main():
 
         # parameters for redshift cluster
         master_username = 'machinroot'
-        master_password = '367Rabbit'
+        master_password = 'DS530password'
         cluster_identifier = 'machindw'
         dbname = 'dev'
 
@@ -34,7 +34,7 @@ def main():
 
         # copying s3 to redshift
         s3_redshift('zagi', zagi_table_names, bucket_name, cluster, master_username, master_password)
-        s3_redshift('homeaway', homeaway_table_names, bucket_name, cluster, master_username, master_password)
+        # s3_redshift('homeaway', homeaway_table_names, bucket_name, cluster, master_username, master_password)
 
         print("success")
     except Exception as e:
@@ -74,14 +74,17 @@ def s3_redshift(dbname, table_list, bucket_name, cluster, master_username, maste
         # drop current connection and create new
         machindw = p.PSQL(dbname, cluster['Endpoint']['Address'], '5439', master_username, master_password)
 
-        # check tables
         if len(machindw.get_tables()) == 0:
+            # create db tables
             machindw.execute_file('resources/{}db.sql'.format(dbname))
 
-        # copy data
-        for table_name in table_list:
-            s3_path = 's3://{}/{}/{}.csv'.format(bucket_name, dbname, table_name)
-            machindw.copy(table_name, s3_path)
+            # copy data
+            for table_name in table_list:
+                s3_path = 's3://{}/{}/{}.csv'.format(bucket_name, dbname, table_name)
+                machindw.copy(table_name, s3_path)
+
+        # create dw tables
+        machindw.execute_file('resources/{}dw.sql'.format(dbname))
     except Exception as e:
         print(e)
     finally:

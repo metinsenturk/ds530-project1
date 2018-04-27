@@ -5,7 +5,6 @@ import botocore as botoc
 class S3:
     bucket_name = ''
 
-
     def __init__(self, bucket_name):
         # init aws
         client = boto.client('s3')

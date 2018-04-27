@@ -18,11 +18,10 @@ class Redshift:
     def create_cluster(self, cluster_identifier, db_name, master_username, master_password):
         client = self.client
 
-        response = client.describe_clusters(
-            ClusterIdentifier=cluster_identifier
-        )
+        response = client.describe_clusters()
+        clusters: list = response['Clusters']
 
-        if response['Clusters'][0]['ClusterIdentifier'] != cluster_identifier:
+        if len(clusters) == 0:
             # create cluster
             response = client.create_cluster(
                 DBName=db_name,
@@ -37,8 +36,10 @@ class Redshift:
             )
 
             return response['Cluster']
-
-        return response['Clusters'][0]
+        else:
+            for cluster in clusters:
+                if cluster_identifier == cluster['ClusterIdentifier']:
+                    return cluster
 
     def delete_cluster(self, cluster_identifier):
         client = self.client
