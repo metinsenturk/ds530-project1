@@ -92,6 +92,9 @@ def purge_everything(cluster_identifier, bucket_name):
     redshift.delete_cluster(cluster_identifier)
 
     s3 = s.S3()
+    objts = s3.list_objects()
+    for obj in objts:
+        s3.delete_object(obj['Key'])
     s3.delete_bucket(bucket_name)
 
 

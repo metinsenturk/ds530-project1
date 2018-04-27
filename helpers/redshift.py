@@ -43,14 +43,18 @@ class Redshift:
     def delete_cluster(self, cluster_identifier):
         client = self.client
 
-        response = client.delete_cluster(
-            ClusterIdentifier=cluster_identifier,
-            SkipFinalClusterSnapshot=True
-        )
+        response = client.describe_clusters()
 
-        cluster = response['Cluster']
+        if len(response['Clusters']):
+            if response['Clusters'][0]['ClusterIdentifier'] == cluster_identifier:
+                response = client.delete_cluster(
+                    ClusterIdentifier=cluster_identifier,
+                    SkipFinalClusterSnapshot=True
+                )
 
-        return cluster
+                cluster = response['Cluster']
+
+                return cluster
 
     def waiter(self, cluster_identifier, waiter_no):
         client = self.client

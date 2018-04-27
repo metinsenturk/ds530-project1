@@ -35,7 +35,7 @@ class S3(object):
             Bucket=bucket_name
         )
 
-    def list_objects(self, prefix):
+    def list_objects(self, prefix=''):
         client = self.client
 
         response = client.list_objects(
