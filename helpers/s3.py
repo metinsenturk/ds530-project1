@@ -1,14 +1,17 @@
 import boto3 as boto
-import botocore
+import botocore as botoc
 
-class S3(object):
+
+class S3:
     bucket_name = ''
+
 
     def __init__(self, bucket_name):
         # init aws
         client = boto.client('s3')
+
         self.client = client
-        self.bucket = bucket_name
+        self.bucket_name = bucket_name
 
     def create_bucket(self, bucket_name):
         client = self.client
@@ -17,7 +20,7 @@ class S3(object):
             response = client.head_bucket(
                 Bucket=bucket_name
             )
-        except botocore.exceptions.ClientError as e:
+        except botoc.exceptions.ClientError as e:
             error_code = int(e.response['Error']['Code'])
 
             if error_code == 404:
@@ -25,18 +28,21 @@ class S3(object):
                 buckets = response['Buckets']
 
                 response = client.create_bucket(
-                    Bucket=bucket_name
+                    Bucket=self.bucket_name
                 )
 
-                if response['Location']:
-                    return True
-                else:
-                    return False
+            if response['Location']:
+                return True
+            else:
+                return False
 
-    def delete_bucket(self, bucket_name):
+    def delete_bucket(self, bucket_name=''):
         client = self.client
 
-        response = client.delete_bucket(
+        if bucket_name == '':
+            bucket_name = self.bucket_name
+
+        client.delete_bucket(
             Bucket=bucket_name
         )
 

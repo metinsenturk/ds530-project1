@@ -21,7 +21,7 @@ class PSQL:
         query = "select * from %s;"
 
         cursor = self.conn.cursor()
-        cursor.execute(query, (table_name,))
+        cursor.execute(query % table_name)
         rows = cursor.fetchall()
 
         with open(file_name, 'w') as f:

@@ -3,8 +3,19 @@
   <component name="ChangeListManager">
     <list default="true" id="0b23f99e-5a02-4840-906d-1578db7b70d1" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apartment.csv" beforeDir="false" afterPath="$PROJECT_DIR$/apartment.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/building.csv" beforeDir="false" afterPath="$PROJECT_DIR$/building.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cleaning.csv" beforeDir="false" afterPath="$PROJECT_DIR$/cleaning.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/corpclient.csv" beforeDir="false" afterPath="$PROJECT_DIR$/corpclient.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer.csv" beforeDir="false" afterPath="$PROJECT_DIR$/customer.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helpers/psql.py" beforeDir="false" afterPath="$PROJECT_DIR$/helpers/psql.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/helpers/s3.py" beforeDir="false" afterPath="$PROJECT_DIR$/helpers/s3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/inspecting.csv" beforeDir="false" afterPath="$PROJECT_DIR$/inspecting.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager.csv" beforeDir="false" afterPath="$PROJECT_DIR$/manager.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/managerphone.csv" beforeDir="false" afterPath="$PROJECT_DIR$/managerphone.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/salestransaction.csv" beforeDir="false" afterPath="$PROJECT_DIR$/salestransaction.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store.csv" beforeDir="false" afterPath="$PROJECT_DIR$/store.csv" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -23,11 +34,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="8" column="41" selection-start-line="8" selection-start-column="41" selection-end-line="8" selection-end-column="41" />
+            <state relative-caret-position="210">
+              <caret line="27" selection-start-line="27" selection-end-line="27" />
               <folding>
                 <element signature="e#0#22#0" expanded="true" />
               </folding>
@@ -35,11 +46,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="s3.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="s3.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/helpers/s3.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="344">
-              <caret line="30" column="40" selection-start-line="30" selection-start-column="40" selection-end-line="30" selection-end-column="40" />
+            <state relative-caret-position="150">
+              <caret line="10" column="34" lean-forward="true" selection-start-line="10" selection-start-column="34" selection-end-line="10" selection-end-column="34" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
               </folding>
@@ -65,6 +76,9 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/main.py" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
@@ -75,8 +89,8 @@
         <option value="$PROJECT_DIR$/test_redshift.py" />
         <option value="$PROJECT_DIR$/helpers/dynamodb_helpers.py" />
         <option value="$PROJECT_DIR$/tests/test_dydb.py" />
-        <option value="$PROJECT_DIR$/helpers/psql.py" />
         <option value="$PROJECT_DIR$/helpers/redshift.py" />
+        <option value="$PROJECT_DIR$/helpers/psql.py" />
         <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/helpers/s3.py" />
       </list>
@@ -108,6 +122,11 @@
               <item name="ds530-project1" type="462c0819:PsiDirectoryNode" />
               <item name="helpers" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="ds530-project1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ds530-project1" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -119,11 +138,11 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/tests" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/resources" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/tests" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -207,7 +226,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/helpers/s3.py" />
       <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
@@ -276,11 +295,11 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.test_psql" />
         <item itemvalue="Python.s3" />
+        <item itemvalue="Python.s3" />
+        <item itemvalue="Python.test_psql" />
         <item itemvalue="Python.aws_credentials" />
         <item itemvalue="Python.test_redshift" />
-        <item itemvalue="Python.test_s3" />
       </list>
     </recent_temporary>
   </component>
@@ -414,7 +433,14 @@
       <option name="project" value="LOCAL" />
       <updated>1524821743004</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="s3 create_bucket bug fixed">
+      <created>1524851075922</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1524851075922</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TodoView">
@@ -428,7 +454,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1440" height="878" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6325224" visible="true" weight="0.28683835" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3290653" />
@@ -436,12 +461,12 @@
       <window_info anchor="right" id="R Graphics" order="4" weight="0.3297568" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5007153" side_tool="true" weight="0.33674777" />
       <window_info anchor="bottom" auto_hide="true" id="Version Control" order="7" weight="0.3277849" />
-      <window_info active="true" anchor="bottom" id="Python Console" order="8" sideWeight="0.49928468" visible="true" weight="0.33674777" />
+      <window_info anchor="bottom" id="Python Console" order="8" sideWeight="0.49928468" weight="0.33674777" />
       <window_info anchor="bottom" auto_hide="true" id="Run" order="2" weight="0.32010242" />
       <window_info id="Structure" order="1" sideWeight="0.50192064" side_tool="true" weight="0.25894135" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.3290653" />
       <window_info id="Favorites" order="2" sideWeight="0.5016026" side_tool="true" weight="0.25579977" />
-      <window_info anchor="bottom" auto_hide="true" id="Debug" order="3" sideWeight="0.4993895" weight="0.29449424" />
+      <window_info active="true" anchor="bottom" auto_hide="true" id="Debug" order="3" sideWeight="0.4993895" visible="true" weight="0.29449424" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -503,7 +528,8 @@
     <MESSAGE value="main presentation completion" />
     <MESSAGE value="s3_to_redshift finished" />
     <MESSAGE value="purge added" />
-    <option name="LAST_COMMIT_MESSAGE" value="purge added" />
+    <MESSAGE value="s3 create_bucket bug fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="s3 create_bucket bug fixed" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -515,14 +541,9 @@
           <option name="timeStamp" value="11" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/helpers/s3.py</url>
-          <line>23</line>
-          <option name="timeStamp" value="49" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/helpers/s3.py</url>
-          <line>16</line>
-          <option name="timeStamp" value="50" />
+          <url>file://$PROJECT_DIR$/main.py</url>
+          <line>27</line>
+          <option name="timeStamp" value="51" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -532,7 +553,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="51" />
+      <option name="time" value="54" />
     </breakpoint-manager>
   </component>
   <component name="debuggerHistoryManager">
@@ -763,13 +784,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/helpers/dynamodb.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2281">
-          <caret line="5" column="3" lean-forward="true" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/test_psql.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="598">
@@ -784,6 +798,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/botocore/client.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="145">
+          <caret line="469" column="56" lean-forward="true" selection-start-line="469" selection-start-column="56" selection-end-line="469" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/homeawaydb.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-180" />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/helpers/redshift.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -793,37 +819,40 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/helpers/psql.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="6" column="8" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
+        <state relative-caret-position="345">
+          <caret line="23" column="31" selection-start-line="23" selection-start-column="31" selection-end-line="23" selection-end-column="31" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/botocore/client.py">
+    <entry file="file://$PROJECT_DIR$/helpers/dynamodb.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="145">
-          <caret line="469" column="56" lean-forward="true" selection-start-line="469" selection-start-column="56" selection-end-line="469" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="8" column="41" selection-start-line="8" selection-start-column="41" selection-end-line="8" selection-end-column="41" />
+        <state relative-caret-position="225">
+          <caret line="59" column="14" selection-start-line="59" selection-start-column="14" selection-end-line="59" selection-end-column="14" />
           <folding>
-            <element signature="e#0#22#0" expanded="true" />
+            <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/helpers/s3.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="344">
-          <caret line="30" column="40" selection-start-line="30" selection-start-column="40" selection-end-line="30" selection-end-column="40" />
+        <state relative-caret-position="150">
+          <caret line="10" column="34" lean-forward="true" selection-start-line="10" selection-start-column="34" selection-end-line="10" selection-end-column="34" />
           <folding>
             <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="27" selection-start-line="27" selection-end-line="27" />
+          <folding>
+            <element signature="e#0#22#0" expanded="true" />
           </folding>
         </state>
       </provider>
