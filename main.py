@@ -13,17 +13,18 @@ def main():
         machindw = p.PSQL('tickit', cluster['Endpoint']['Address'], '5439', 'machinroot', '367Rabbit')
 
         print(machindw.version())
-        print(machindw.execute('select current_database();'))
-        print(machindw.execute("select * from pg_tables where schemaname = 'public';"))
-        print(machindw.execute("insert into category(categoryid,categoryname) values('xs', 'xamarins');"))
-        print(machindw.execute("select * from category;"))
+        print(machindw.get_databases())
+        print(machindw.execute_file('resources/zagdb.sql'))
+
+        # copying
         machindw.copy('category', 'zagi/{}.csv'.format('category'))
 
         print("success")
-        machindw.conn.close()
     except Exception as e:
-        machindw.conn.close()
         print(e)
+    finally:
+        if machindw.conn is not None:
+            machindw.conn.close()
 
 
 def need():

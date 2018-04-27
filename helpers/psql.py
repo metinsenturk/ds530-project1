@@ -42,6 +42,15 @@ class PSQL:
 
         return db_version[0]
 
+    def get_databases(self):
+        cursor = self.conn.cursor()
+
+        cursor.execute("select datname from pg_database;")
+        databases = cursor.fetchall()
+        cursor.close()
+
+        return databases
+
     def execute(self, query):
         cursor = self.conn.cursor()
 
@@ -66,7 +75,7 @@ class PSQL:
         sql = """copy {}.{} from 's3://machin-ds530/{}'\
                 credentials \
                 'aws_access_key_id={};aws_secret_access_key={}' \
-                DELIMITER '|' ACCEPTINVCHARS EMPTYASNULL ESCAPE COMPUPDATE OFF;commit;""" \
+                DELIMITER ',' ACCEPTINVCHARS EMPTYASNULL ESCAPE COMPUPDATE OFF;commit;""" \
             .format('public', table, s3_key, aws_access_key_id, aws_secret_access_key)
 
         cursor.execute(sql)
