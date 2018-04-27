@@ -5,6 +5,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/customer.csv" beforeDir="false" afterPath="$PROJECT_DIR$/customer.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/helpers/psql.py" beforeDir="false" afterPath="$PROJECT_DIR$/helpers/psql.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helpers/redshift.py" beforeDir="false" afterPath="$PROJECT_DIR$/helpers/redshift.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/salestransaction.csv" beforeDir="false" afterPath="$PROJECT_DIR$/salestransaction.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/store.csv" beforeDir="false" afterPath="$PROJECT_DIR$/store.csv" afterDir="false" />
     </list>
@@ -28,10 +30,11 @@
       <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
-              <caret line="45" selection-start-line="45" selection-end-line="45" />
+            <state relative-caret-position="345">
+              <caret line="23" column="26" lean-forward="true" selection-start-line="23" selection-start-column="26" selection-end-line="23" selection-end-column="26" />
               <folding>
-                <element signature="e#0#24#0" expanded="true" />
+                <element signature="e#0#22#0" expanded="true" />
+                <element signature="e#537#1049#0" />
                 <element signature="e#604#1101#0" />
               </folding>
             </state>
@@ -41,8 +44,8 @@
       <file leaf-file-name="codecs.py" pinned="false" current-in-tab="false">
         <entry file="file:///Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/codecs.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="308" selection-start-line="308" selection-end-line="308" />
+            <state relative-caret-position="450">
+              <caret line="310" selection-start-line="310" selection-end-line="310" />
             </state>
           </provider>
         </entry>
@@ -50,8 +53,8 @@
       <file leaf-file-name="psql.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/helpers/psql.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="629">
-              <caret line="43" selection-start-line="43" selection-end-line="43" />
+            <state relative-caret-position="179">
+              <caret line="42" column="15" lean-forward="true" selection-start-line="42" selection-start-column="15" selection-end-line="42" selection-end-column="15" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -87,9 +90,9 @@
         <option value="$PROJECT_DIR$/test_redshift.py" />
         <option value="$PROJECT_DIR$/helpers/dynamodb_helpers.py" />
         <option value="$PROJECT_DIR$/tests/test_dydb.py" />
-        <option value="$PROJECT_DIR$/main.py" />
-        <option value="$PROJECT_DIR$/helpers/redshift.py" />
         <option value="$PROJECT_DIR$/helpers/s3.py" />
+        <option value="$PROJECT_DIR$/helpers/redshift.py" />
+        <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/helpers/psql.py" />
       </list>
     </option>
@@ -387,7 +390,14 @@
       <option name="project" value="LOCAL" />
       <updated>1524790665714</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="updates on copy command">
+      <created>1524795973549</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1524795973549</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TodoView">
@@ -401,15 +411,16 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1440" height="878" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3290653" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50061053" side_tool="true" weight="0.31370038" />
-      <window_info x="0" y="0" width="310" height="678" id="Documentation" order="3" sideWeight="0.48271447" side_tool="true" visible="true" weight="0.2832618" />
+      <window_info x="0" y="0" width="310" height="678" id="Documentation" order="3" sideWeight="0.48262548" side_tool="true" visible="true" weight="0.2832618" />
       <window_info anchor="bottom" auto_hide="true" id="Run" order="2" weight="0.32010242" />
       <window_info anchor="bottom" auto_hide="true" id="Version Control" order="7" weight="0.3277849" />
-      <window_info anchor="bottom" id="Python Console" order="8" weight="0.33674777" />
+      <window_info active="true" anchor="bottom" id="Python Console" order="8" visible="true" weight="0.33674777" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.3290653" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.5172855" visible="true" weight="0.2832618" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.5173745" visible="true" weight="0.2832618" />
       <window_info anchor="right" id="R Packages" order="3" weight="0.3297568" />
       <window_info anchor="right" id="R Graphics" order="4" weight="0.3297568" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3290653" />
@@ -468,7 +479,8 @@
     <MESSAGE value="updates" />
     <MESSAGE value="helper classes ready" />
     <MESSAGE value="main completion up to copy" />
-    <option name="LAST_COMMIT_MESSAGE" value="main completion up to copy" />
+    <MESSAGE value="updates on copy command" />
+    <option name="LAST_COMMIT_MESSAGE" value="updates on copy command" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -486,8 +498,18 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/helpers/psql.py</url>
-          <line>36</line>
+          <line>62</line>
           <option name="timeStamp" value="29" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/main.py</url>
+          <line>19</line>
+          <option name="timeStamp" value="37" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/helpers/psql.py</url>
+          <line>49</line>
+          <option name="timeStamp" value="38" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -497,11 +519,16 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="30" />
+      <option name="time" value="39" />
     </breakpoint-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateExpression">
+      <expression>
+        <expression-string>sql</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>cluster['Endpoint']</expression-string>
         <language-id>Python</language-id>
@@ -539,11 +566,6 @@
       </expression>
       <expression>
         <expression-string>response['Location'].read()</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>cluster</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
@@ -717,16 +739,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/helpers/dynamodb.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="3" lean-forward="true" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="3" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/posixpath.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="303">
@@ -758,30 +770,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/helpers/redshift.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-18">
-          <caret line="15" column="37" selection-start-line="15" selection-start-column="37" selection-end-line="15" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/codecs.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="308" selection-start-line="308" selection-end-line="308" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/test_s3.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="387">
-          <caret line="36" column="22" lean-forward="true" selection-start-line="36" selection-start-column="22" selection-end-line="36" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/helpers/s3.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="434">
@@ -789,12 +777,53 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/category.csv">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/test_s3.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="16" column="15" lean-forward="true" selection-start-line="16" selection-start-column="15" selection-end-line="16" selection-end-column="15" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/helpers/redshift.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="17" column="56" selection-start-line="17" selection-start-column="56" selection-end-line="17" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/codecs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="310" selection-start-line="310" selection-end-line="310" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/helpers/dynamodb.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2281">
+          <caret line="5" column="3" lean-forward="true" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/zagdb.sql">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="45" selection-start-line="45" selection-end-line="45" />
+        <state relative-caret-position="345">
+          <caret line="23" column="26" lean-forward="true" selection-start-line="23" selection-start-column="26" selection-end-line="23" selection-end-column="26" />
           <folding>
-            <element signature="e#0#24#0" expanded="true" />
+            <element signature="e#0#22#0" expanded="true" />
+            <element signature="e#537#1049#0" />
             <element signature="e#604#1101#0" />
           </folding>
         </state>
@@ -802,8 +831,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/helpers/psql.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="43" selection-start-line="43" selection-end-line="43" />
+        <state relative-caret-position="179">
+          <caret line="42" column="15" lean-forward="true" selection-start-line="42" selection-start-column="15" selection-end-line="42" selection-end-column="15" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>

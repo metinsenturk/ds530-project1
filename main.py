@@ -1,13 +1,34 @@
-import helpers.psql as p
 import helpers.s3 as s
+import helpers.psql as p
 import helpers.redshift as r
 
 
 def main():
+    try:
+        s3 = s.S3()
+        s3.bucket_name = 'machin-ds530'
+
+        redshift = r.Redshift()
+        cluster = redshift.create_cluster('machindw', 'exampledw', 'machinroot', '367Rabbit')
+        machindw = p.PSQL('tickit', cluster['Endpoint']['Address'], '5439', 'machinroot', '367Rabbit')
+
+        print(machindw.version())
+        print(machindw.execute('select current_database();'))
+        print(machindw.execute("select * from pg_tables where schemaname = 'public';"))
+        print(machindw.execute("insert into category(categoryid,categoryname) values('xs', 'xamarins');"))
+        print(machindw.execute("select * from category;"))
+        machindw.copy('category', 'zagi/{}.csv'.format('category'))
+
+        print("success")
+        machindw.conn.close()
+    except Exception as e:
+        machindw.conn.close()
+        print(e)
+
+
+def need():
     s3 = s.S3()
     s3.bucket_name = 'machin-ds530'
-
-    redshift = r.Redshift()
     zagi = p.PSQL('zagi', 'localhost')
 
     zagi_table_names = ['category', 'customer', 'product', 'region',
@@ -21,10 +42,7 @@ def main():
         file = open('{}.csv'.format(table_name), 'rb')
         s3.put_object(file, 'zagi/{}.csv'.format(table_name))
 
-    cluster = redshift.create_cluster('machindw', 'machinroot', '367Rabbit')
-
-    machindw = p.PSQL('dev', cluster['Endpoint']['Address'], '5439', 'machinroot', '367Rabbit')
-    machindw.copy(zagi_table_names[0], 'zagi/{}.csv'.format('category'))
+    zagi.conn.close()
 
 
 def junk():

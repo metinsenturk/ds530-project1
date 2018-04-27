@@ -15,7 +15,7 @@ class Redshift:
 
         return response['Clusters'][0]
 
-    def create_cluster(self, cluster_identifier, master_username, master_password):
+    def create_cluster(self, cluster_identifier, db_name, master_username, master_password):
         client = self.client
 
         response = client.describe_clusters(
@@ -25,6 +25,7 @@ class Redshift:
         if response['Clusters'][0]['ClusterIdentifier'] != cluster_identifier:
             # create cluster
             response = client.create_cluster(
+                DBName=db_name,
                 ClusterIdentifier=cluster_identifier,
                 NodeType='ds2.xlarge',
                 ClusterType='single-node',
