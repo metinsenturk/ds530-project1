@@ -1,31 +1,44 @@
 import helpers.s3 as s
 import helpers.psql as p
 import helpers.redshift as r
+import time as t
 
 
-def main(job):
+def create(_job):
     try:
         # parameters: s3
-        bucket_name = job.s3.bucket_name
+        bucket_name = _job.s3.bucket_name
 
         # parameters: redshift
-        master_username = job.redshift.master_username
-        master_password = job.redshift.master_password
-        cluster_identifier = job.redshift.cluster_identifier
-        dbname = job.redshift.dbname
+        master_username = _job.redshift.master_username
+        master_password = _job.redshift.master_password
+        cluster_identifier = _job.redshift.cluster_identifier
+        dbname = _job.redshift.dbname
 
         # s3: init
         s3 = s.S3(bucket_name)
         s3.create_bucket(bucket_name)
+        print("connected to s3 bucket: %s" % bucket_name)
 
         # redshift: init
         redshift = r.Redshift()
         redshift.create_cluster(cluster_identifier, dbname, master_username, master_password)
         print("redshift cluster initialized.")
 
+        # redshift: start of creation
+        time_start = t.time()
+        print("redshift cluster creating: %d" % time_start)
+
         # redshift: waiting for init
         redshift.waiter(cluster_identifier, 0)
         print("redshift cluster initilalization completed.")
+
+        # redshift: end of creation
+        time_end = t.time()
+        print("redshift cluster creating: %d" % time_end)
+
+        # redshift: time of creation
+        print("waiting time for creation: %d secondes." % (time_end - time_start))
 
         # redshift: get cluster info
         cluster = redshift.describe_cluster(cluster_identifier)
@@ -33,102 +46,120 @@ def main(job):
 
         # from local to upload s3
         for dbname in job.local.databases:
-            tables = psql_s3(dbname, bucket_name)
-            print("%s processed and uploaded to s3." % dbname)
+            # Local to S3 ==========================================
+            # connect to db
+            local = p.PSQL(dbname, 'localhost')
 
-            s3_redshift(dbname, tables, bucket_name, cluster, master_username, master_password)
-            print("from %s, %d tables transferred from s3 to redshift." % (dbname, len(tables)))
+            # get tables
+            table_list = local.get_tables()
 
-        print("success")
-    except Exception as e:
-        print(e)
+            # processing tables
+            for table_name in table_list:
+                # write data to csv files
+                local.table_to_csv(table_name)
 
+                # s3 upload
+                file = open('{}.csv'.format(table_name), 'rb')
+                s3.put_object(file, '{}/{}.csv'.format(dbname, table_name))
 
-def psql_s3(dbname, bucket_name):
-    s3 = s.S3(bucket_name)
-    s3.create_bucket(bucket_name)
-    print("connected to s3 bucket: %s" % bucket_name)
+            # close connection
+            local.conn.close()
 
-    try:
-        # connect to db
-        db = p.PSQL(dbname, 'localhost')
+            # S3 to Redshift ========================================
+            # connect default database first
+            redshift_dev = p.PSQL(
+                'dev',
+                cluster['Endpoint']['Address'],
+                cluster['Endpoint']['Port'],
+                master_username,
+                master_password
+            )
+            print("---- connected to database: %s" % 'dev')
 
-        # get tables
-        table_list = db.get_tables()
+            # create database
+            databases = redshift_dev.get_databases()
+            if (dbname,) not in databases:
+                redshift_dev.create_database(dbname)
 
-        # processing tables
-        for table_name in table_list:
-            # write data to csv files
-            db.table_to_csv(table_name)
+            # close connection
+            redshift_dev.conn.close()
 
-            # s3 upload
-            file = open('{}.csv'.format(table_name), 'rb')
-            s3.put_object(file, '{}/{}.csv'.format(dbname, table_name))
+            # connect to created database
+            redshift_db = p.PSQL(
+                dbname,
+                cluster['Endpoint']['Address'],
+                cluster['Endpoint']['Port'],
+                master_username,
+                master_password
+            )
 
-        return table_list
-    except Exception as e:
-        print(e)
-    finally:
-        db.conn.close()
+            print("---- connected to database: %s" % dbname)
 
-
-def s3_redshift(dbname, table_list, bucket_name, cluster, master_username, master_password):
-    try:
-        # connect default database first
-        machindw = p.PSQL('dev', cluster['Endpoint']['Address'], '5439', master_username, master_password)
-        print("---- connected to database: %s" % 'dev')
-
-        # create database
-        databases = machindw.get_databases()
-        if (dbname,) not in databases:
-            machindw.create_database(dbname)
-        machindw.conn.close()
-
-        # drop current connection and create new
-        machindw = p.PSQL(dbname, cluster['Endpoint']['Address'], '5439', master_username, master_password)
-        print("---- connected to database: %s" % dbname)
-
-        if len(machindw.get_tables()) == 0:
             # create db tables
-            machindw.execute_file('resources/{}db.sql'.format(dbname))
+            redshift_db.execute_file('resources/{}db.sql'.format(dbname))
             print("---- tables created for: %s" % dbname)
+
+            # get tables
+            table_list = redshift_db.get_tables()
 
             # copy data
             for table_name in table_list:
+                # s3 path
                 s3_path = 's3://{}/{}/{}.csv'.format(bucket_name, dbname, table_name)
-                machindw.copy(table_name, s3_path)
+
+                # copy s3 to redshift
+                redshift_db.copy(table_name, s3_path)
                 print("---- data uploaded to: %s" % table_name)
 
-            if dbname == 'zagi':
-                # create dw tables
-                machindw.execute_file('resources/{}dw.sql'.format(dbname))
-                print("---- tables (dw) created for: %s" % dbname)
+            # close connection
+            redshift_db.conn.close()
+
+        print("yeyy")
     except Exception as e:
         print(e)
-    finally:
-        if machindw.conn is not None:
-            machindw.conn.close()
-            print("---- connection to database closed.")
 
 
-def purge_everything(cluster_identifier, bucket_name):
-    print("purge started.")
-    redshift = r.Redshift()
-    redshift.delete_cluster(cluster_identifier)
+def purge(cluster_identifier, bucket_name):
+    try:
+        print("purge started.")
 
-    redshift.waiter(cluster_identifier, 1)
-    print("purged: redshift cluster: %s" % cluster_identifier)
+        # init: redshift
+        redshift = r.Redshift()
 
-    s3 = s.S3(bucket_name)
-    objts = s3.list_objects()
-    for obj in objts:
-        s3.delete_object(obj['Key'])
-        print("purged: s3 object: %s" % obj['Key'])
+        # init: s3
+        s3 = s.S3(bucket_name)
 
-    s3.delete_bucket(bucket_name)
-    print("purged: s3 bucket: %s" % bucket_name)
+        # delete redshift
+        redshift.delete_cluster(cluster_identifier)
 
-    print("good bye!")
+        # delete s3 objects
+        objts = s3.list_objects()
+        for obj in objts:
+            s3.delete_object(obj['Key'])
+            print("purged: s3 object: %s" % obj['Key'])
+
+        # delete s3 bucket
+        s3.delete_bucket(bucket_name)
+        print("purged: s3 bucket: %s" % bucket_name)
+
+        # wait for redshift delete
+        time_start = t.time()
+        print("redshift cluster deletion started: %d" % time_start)
+
+        # waiter
+        redshift.waiter(cluster_identifier, 1)
+        print("purged: redshift cluster: %s" % cluster_identifier)
+
+        # end time
+        time_end = t.time()
+        print("redshift cluster deleted: %d" % time_end)
+
+        # time of deletion
+        print("waiting time for deletion: %d secondes."(time_end - time_start))
+
+        print("good bye!")
+    except Exception as e:
+        print(e)
 
 
 if __name__ == '__main__':
@@ -162,6 +193,6 @@ if __name__ == '__main__':
     )
 
     if job.purge is False:
-        main(job)
+        create(job)
     else:
-        purge_everything(job)
+        purge(job)
