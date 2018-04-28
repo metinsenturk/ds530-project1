@@ -20,41 +20,44 @@ def create(_job):
         s3.create_bucket(bucket_name)
         print("- connected to s3 bucket: %s" % bucket_name)
 
-        # redshift: init
-        redshift = r.Redshift()
-        redshift.create_cluster(cluster_identifier, dbname, master_username, master_password)
-        print("- redshift cluster initialized.")
+        if _job.purge is True:
+            # redshift: init
+            redshift = r.Redshift()
+            redshift.create_cluster(cluster_identifier, dbname, master_username, master_password)
+            print("- redshift cluster initialized.")
 
-        # redshift: start of creation
-        time_start = t.time()
-        print("- redshift cluster creating: %d" % time_start)
+            # redshift: start of creation
+            time_start = t.time()
+            print("- redshift cluster creating: %d" % time_start)
 
-        # redshift: waiting for init
-        redshift.waiter(cluster_identifier, 0)
-        print("- redshift cluster initilalization completed.")
+            # redshift: waiting for init
+            redshift.waiter(cluster_identifier, 0)
+            print("- redshift cluster initilalization completed.")
 
-        # redshift: end of creation
-        time_end = t.time()
-        print("- redshift cluster creating: %d" % time_end)
+            # redshift: end of creation
+            time_end = t.time()
+            print("- redshift cluster creating: %d" % time_end)
 
-        # redshift: time of creation
-        print("- waiting time for creation: %d secondes." % (time_end - time_start))
+            # redshift: time of creation
+            print("- waiting time for creation: %d secondes." % (time_end - time_start))
 
-        # redshift: get cluster info
-        cluster = redshift.describe_cluster(cluster_identifier)
-        print("- redshift cluster: %s" % cluster_identifier)
+            # redshift: get cluster info
+            cluster = redshift.describe_cluster(cluster_identifier)
+            print("- redshift cluster: %s" % cluster_identifier)
 
         # operation
         for dbname in _job.local.databases:
             # Local to S3 ==========================================
             # connect to db
             local = p.PSQL(dbname, 'localhost')
+            print("-- connected to database: %s" % 'local')
 
             # get tables
             table_list = local.get_tables()
+            print("-- list of tables created for: %s" % dbname)
 
             # processing tables
-            for table_name in table_list:
+            for (table_name,) in table_list:
                 # write data to csv files
                 local.table_to_csv(table_name)
                 print("--- %s table saved as csv." % table_name)
@@ -105,7 +108,7 @@ def create(_job):
             table_list = redshift_db.get_tables()
 
             # copy data
-            for table_name in table_list:
+            for (table_name,) in table_list:
                 # s3 path
                 s3_path = 's3://{}/{}/{}.csv'.format(bucket_name, dbname, table_name)
 
@@ -116,62 +119,61 @@ def create(_job):
             # close connection
             redshift_db.conn.close()
 
-        print("yeyy")
+        print("- yeyy")
     except Exception as e:
         print(e)
 
 
-def purge(cluster_identifier, bucket_name):
+def purge(_job):
     try:
-        print("purge started.")
+        print("- purge started.")
 
         # init: redshift
         redshift = r.Redshift()
 
         # init: s3
-        s3 = s.S3(bucket_name)
+        s3 = s.S3(_job.s3.bucket_name)
 
         # delete redshift
-        redshift.delete_cluster(cluster_identifier)
+        redshift.delete_cluster(_job.redshift.cluster_identifier)
+        print("- purged: redshift cluster requested for deletion.")
 
         # delete s3 objects
         objts = s3.list_objects()
         for obj in objts:
             s3.delete_object(obj['Key'])
-            print("purged: s3 object: %s" % obj['Key'])
+            print("-- purged: s3 object: %s" % obj['Key'])
 
         # delete s3 bucket
-        s3.delete_bucket(bucket_name)
-        print("purged: s3 bucket: %s" % bucket_name)
+        s3.delete_bucket(_job.s3.bucket_name)
+        print("- purged: s3 bucket: %s" % _job.s3.bucket_name)
 
         # wait for redshift delete
         time_start = t.time()
-        print("redshift cluster deletion started: %d" % time_start)
+        print("- redshift cluster deletion started: %d" % time_start)
 
         # waiter
-        redshift.waiter(cluster_identifier, 1)
-        print("purged: redshift cluster: %s" % cluster_identifier)
+        redshift.waiter(_job.redshift.cluster_identifier, 1)
+        print("- purged: redshift cluster: %s" % _job.redshift.cluster_identifier)
 
         # end time
         time_end = t.time()
-        print("redshift cluster deleted: %d" % time_end)
+        print("- redshift cluster deleted: %d" % time_end)
 
         # time of deletion
-        print("waiting time for deletion: %d secondes." % (time_end - time_start))
+        print("- waiting time for deletion: %d secondes." % (time_end - time_start))
 
-        print("good bye!")
+        print("- good bye!")
     except Exception as e:
         print(e)
 
 
 if __name__ == '__main__':
-
     from helpers import job as j
-
     job = j.Job(
-        purge=False,
+        purge=True,
         s3={
-            "bucket_name": "",
+            "bucket_name": "machin-s3-default",
         },
         redshift={
             "cluster_identifier": "",
@@ -183,13 +185,13 @@ if __name__ == '__main__':
         local={
             "conn_info":
                 {
-                    "user": "",
+                    "user": "postgres",
                     "password": "",
-                    "host": "",
-                    "port": 0
+                    "host": "localhost",
+                    "port": 5432
                 },
             "databases": [
-                "",
+                "zagi",
             ]
         }
     )
