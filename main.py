@@ -20,30 +20,29 @@ def create(_job):
         s3.create_bucket(bucket_name)
         print("- connected to s3 bucket: %s" % bucket_name)
 
-        if _job.purge is True:
-            # redshift: init
-            redshift = r.Redshift()
-            redshift.create_cluster(cluster_identifier, dbname, master_username, master_password)
-            print("- redshift cluster initialized.")
+        # redshift: init
+        redshift = r.Redshift()
+        redshift.create_cluster(cluster_identifier, dbname, master_username, master_password)
+        print("- redshift cluster initialized.")
 
-            # redshift: start of creation
-            time_start = t.time()
-            print("- redshift cluster creating: %d" % time_start)
+        # redshift: start of creation
+        time_start = t.time()
+        print("- redshift cluster creating: %d" % time_start)
 
-            # redshift: waiting for init
-            redshift.waiter(cluster_identifier, 0)
-            print("- redshift cluster initilalization completed.")
+        # redshift: waiting for init
+        redshift.waiter(cluster_identifier, 0)
+        print("- redshift cluster initilalization completed.")
 
-            # redshift: end of creation
-            time_end = t.time()
-            print("- redshift cluster creating: %d" % time_end)
+        # redshift: end of creation
+        time_end = t.time()
+        print("- redshift cluster creating: %d" % time_end)
 
-            # redshift: time of creation
-            print("- waiting time for creation: %d secondes." % (time_end - time_start))
+        # redshift: time of creation
+        print("- waiting time for creation: %d secondes." % (time_end - time_start))
 
-            # redshift: get cluster info
-            cluster = redshift.describe_cluster(cluster_identifier)
-            print("- redshift cluster: %s" % cluster_identifier)
+        # redshift: get cluster info
+        cluster = redshift.describe_cluster(cluster_identifier)
+        print("- redshift cluster: %s" % cluster_identifier)
 
         # operation
         for idx, dbname in enumerate(_job.local.databases):

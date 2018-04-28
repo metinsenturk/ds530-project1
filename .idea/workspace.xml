@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0b23f99e-5a02-4840-906d-1578db7b70d1" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -21,26 +22,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="590">
-              <caret line="198" column="5" selection-start-line="171" selection-start-column="4" selection-end-line="198" selection-end-column="5" />
+            <state relative-caret-position="-1071">
+              <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
               <folding>
                 <element signature="e#0#22#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/README.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="1128">
-                <caret line="94" lean-forward="true" selection-start-line="94" selection-end-line="94" />
-              </first_editor>
-              <second_editor />
             </state>
           </provider>
         </entry>
@@ -95,8 +84,8 @@
         <option value="$PROJECT_DIR$/resources/zagidw.sql" />
         <option value="$PROJECT_DIR$/resources/zagiidw.sql" />
         <option value="$PROJECT_DIR$/helpers/job.py" />
-        <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/main.py" />
       </list>
     </option>
   </component>
@@ -106,6 +95,7 @@
     <option name="height" value="878" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <OptionsSetting value="false" id="Update" />
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectView">
@@ -119,21 +109,6 @@
             <path>
               <item name="ds530-project1" type="b2602c69:ProjectViewProjectNode" />
               <item name="ds530-project1" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ds530-project1" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ds530-project1" type="462c0819:PsiDirectoryNode" />
-              <item name="helpers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ds530-project1" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ds530-project1" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ds530-project1" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ds530-project1" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -657,7 +632,21 @@
       <option name="project" value="LOCAL" />
       <updated>1524944440090</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="Update README.md">
+      <created>1524945469078</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1524945469078</updated>
+    </task>
+    <task id="LOCAL-00034" summary="Merge remote-tracking branch 'origin/making-reusable' into making-reusable&#10;&#10;# Conflicts:&#10;#&#9;README.md">
+      <created>1524945677676</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1524945677676</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TodoView">
@@ -673,7 +662,7 @@
     <frame x="0" y="22" width="1440" height="878" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6325224" visible="true" weight="0.22246066" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6325224" visible="true" weight="0.22246066" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.4985694" weight="0.3290653" />
       <window_info anchor="right" id="R Packages" order="3" weight="0.3297568" />
       <window_info anchor="right" id="R Graphics" order="4" weight="0.3297568" />
@@ -732,8 +721,6 @@
     <ignored-roots>
       <path value="$USER_HOME$" />
     </ignored-roots>
-    <MESSAGE value="updates" />
-    <MESSAGE value="helper classes ready" />
     <MESSAGE value="main completion up to copy" />
     <MESSAGE value="updates on copy command" />
     <MESSAGE value="redshift commands working" />
@@ -757,7 +744,9 @@
     <MESSAGE value="readme begin" />
     <MESSAGE value="readme detailed description added" />
     <MESSAGE value="readme image links" />
-    <option name="LAST_COMMIT_MESSAGE" value="readme image links" />
+    <MESSAGE value="Update README.md" />
+    <MESSAGE value="Merge remote-tracking branch 'origin/making-reusable' into making-reusable&#10;&#10;# Conflicts:&#10;#&#9;README.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge remote-tracking branch 'origin/making-reusable' into making-reusable&#10;&#10;# Conflicts:&#10;#&#9;README.md" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -770,7 +759,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main.py</url>
-          <line>128</line>
+          <line>127</line>
           <option name="timeStamp" value="70" />
         </line-breakpoint>
       </breakpoints>
@@ -1118,23 +1107,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="590">
-          <caret line="198" column="5" selection-start-line="171" selection-start-column="4" selection-end-line="198" selection-end-column="5" />
-          <folding>
-            <element signature="e#0#22#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="1128">
-            <caret line="94" lean-forward="true" selection-start-line="94" selection-end-line="94" />
+          <first_editor relative-caret-position="-256">
+            <caret line="19" column="51" selection-start-line="19" selection-start-column="51" selection-end-line="19" selection-end-column="51" />
           </first_editor>
           <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1071">
+          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+          <folding>
+            <element signature="e#0#22#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
