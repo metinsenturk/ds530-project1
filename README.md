@@ -19,8 +19,7 @@ pip install awscli
 
 The following is the policies that attached to my user at the time.
 
-![aws policies]
-(https://github.com/metinsenturk/ds530-project1/tree/making-reusable/resources/aws-policy.png)
+![aws policies](https://github.com/metinsenturk/ds530-project1/tree/making-reusable/resources/aws-policy.png)
 
 If you already have them installed, you need to configure aws credentials.
 
@@ -28,8 +27,7 @@ If you already have them installed, you need to configure aws credentials.
 aws configure
 ```
 
-![aws configure]:
-(https://github.com/metinsenturk/ds530-project1/tree/making-reusable/resource/aws-configure.png)
+![aws configure](https://github.com/metinsenturk/ds530-project1/tree/making-reusable/resource/aws-configure.png)
 
 This will pop up the following. The credentials you provide should have the following policies.
 
