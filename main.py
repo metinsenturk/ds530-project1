@@ -3,61 +3,60 @@ import helpers.psql as p
 import helpers.redshift as r
 
 
-def main():
+def main(job):
     try:
-        # bucket name
-        bucket_name = 'machin-s3-default'
+        # parameters: s3
+        bucket_name = job.s3.bucket_name
 
-        # tables for databases
-        zagi_table_names = ['category', 'customer', 'product', 'region',
-                            'salestransaction', 'soldvia', 'store', 'vendor']
-        print("tables in zagi: %s" % zagi_table_names)
-        homeaway_table_names = ['apartment', 'building', 'cleaning', 'corpclient',
-                                'inspecting', 'inspector', 'manager', 'managerphone', 'staffmember']
-        print("tables in homeaway: %s" % homeaway_table_names)
+        # parameters: redshift
+        master_username = job.redshift.master_username
+        master_password = job.redshift.master_password
+        cluster_identifier = job.redshift.cluster_identifier
+        dbname = job.redshift.dbname
 
-        # from local to upload s3
-        psql_s3('zagi', zagi_table_names, bucket_name)
-        print("zagi uploaded.")
-        psql_s3('homeaway', homeaway_table_names, bucket_name)
-        print("homeaway uploaded.")
+        # s3: init
+        s3 = s.S3(bucket_name)
+        s3.create_bucket(bucket_name)
 
-        # parameters for redshift cluster
-        master_username = 'machinroot'
-        master_password = 'DS530password'
-        cluster_identifier = 'machindw'
-        dbname = 'dev'
-
-        # creating cluster if not exists
+        # redshift: init
         redshift = r.Redshift()
         redshift.create_cluster(cluster_identifier, dbname, master_username, master_password)
         print("redshift cluster initialized.")
 
-        # waiting cluster to become available
+        # redshift: waiting for init
         redshift.waiter(cluster_identifier, 0)
         print("redshift cluster initilalization completed.")
-        cluster = redshift.describe_cluster(cluster_identifier)
-        print("redshift cluster: %s" % cluster['ClusterIdentifier'])
 
-        # copying s3 to redshift
-        s3_redshift('zagi', zagi_table_names, bucket_name, cluster, master_username, master_password)
-        print("zagi tables transferred from s3 to redshift.")
-        s3_redshift('homeaway', homeaway_table_names, bucket_name, cluster, master_username, master_password)
-        print("homeaway tables transferred from s3 to redshift.")
+        # redshift: get cluster info
+        cluster = redshift.describe_cluster(cluster_identifier)
+        print("redshift cluster: %s" % cluster_identifier)
+
+        # from local to upload s3
+        for dbname in job.local.databases:
+            tables = psql_s3(dbname, bucket_name)
+            print("%s processed and uploaded to s3." % dbname)
+
+            s3_redshift(dbname, tables, bucket_name, cluster, master_username, master_password)
+            print("from %s, %d tables transferred from s3 to redshift." % (dbname, len(tables)))
 
         print("success")
     except Exception as e:
         print(e)
 
 
-def psql_s3(dbname, table_list, bucket_name):
+def psql_s3(dbname, bucket_name):
     s3 = s.S3(bucket_name)
     s3.create_bucket(bucket_name)
     print("connected to s3 bucket: %s" % bucket_name)
 
     try:
+        # connect to db
         db = p.PSQL(dbname, 'localhost')
 
+        # get tables
+        table_list = db.get_tables()
+
+        # processing tables
         for table_name in table_list:
             # write data to csv files
             db.table_to_csv(table_name)
@@ -65,6 +64,8 @@ def psql_s3(dbname, table_list, bucket_name):
             # s3 upload
             file = open('{}.csv'.format(table_name), 'rb')
             s3.put_object(file, '{}/{}.csv'.format(dbname, table_name))
+
+        return table_list
     except Exception as e:
         print(e)
     finally:
@@ -73,6 +74,7 @@ def psql_s3(dbname, table_list, bucket_name):
 
 def s3_redshift(dbname, table_list, bucket_name, cluster, master_username, master_password):
     try:
+        # connect default database first
         machindw = p.PSQL('dev', cluster['Endpoint']['Address'], '5439', master_username, master_password)
         print("---- connected to database: %s" % 'dev')
 
@@ -130,5 +132,36 @@ def purge_everything(cluster_identifier, bucket_name):
 
 
 if __name__ == '__main__':
-    # purge_everything('machindw', 'machin-s3-default')
-    main()
+
+    from helpers import job as j
+
+    job = j.Job(
+        purge=False,
+        s3={
+            "bucket_name": "",
+        },
+        redshift={
+            "cluster_identifier": "",
+            "cluster_name": "",
+            "master_username": "",
+            "master_password": "",
+            "dbname": ""
+        },
+        local={
+            "conn_info":
+                {
+                    "user": "",
+                    "password": "",
+                    "host": "",
+                    "port": 0
+                },
+            "databases": [
+                "",
+            ]
+        }
+    )
+
+    if job.purge is False:
+        main(job)
+    else:
+        purge_everything(job)
