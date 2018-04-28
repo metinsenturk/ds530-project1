@@ -22,6 +22,8 @@ class Job:
                     },
                 "databases": [
                     "",
+                ],
+                "scripts": [
                 ]
         }
     )
@@ -59,8 +61,9 @@ class Redshift(Job):
 
 
 class Local(Job):
-    def __init__(self, conn_info, databases):
+    def __init__(self, conn_info, databases, scripts):
         self.databases = databases
+        self.scripts = scripts
         self.conn_info = ConnInfo(
             conn_info['user'],
             conn_info['password'],

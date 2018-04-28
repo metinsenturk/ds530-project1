@@ -46,7 +46,7 @@ def create(_job):
             print("- redshift cluster: %s" % cluster_identifier)
 
         # operation
-        for dbname in _job.local.databases:
+        for idx, dbname in enumerate(_job.local.databases):
             # Local to S3 ==========================================
             # connect to db
             local = p.PSQL(dbname, 'localhost')
@@ -101,7 +101,7 @@ def create(_job):
             print("-- connected to database: %s" % dbname)
 
             # create db tables
-            redshift_db.execute_file('resources/{}db.sql'.format(dbname))
+            redshift_db.execute_file(_job.local.scripts[idx])
             print("-- tables created for: %s" % dbname)
 
             # get tables
@@ -170,6 +170,7 @@ def purge(_job):
 
 if __name__ == '__main__':
     from helpers import job as j
+
     job = j.Job(
         purge=True,
         s3={
@@ -191,8 +192,9 @@ if __name__ == '__main__':
                     "port": 5432
                 },
             "databases": [
-                "zagi",
-            ]
+                "zagi", ],
+            "scripts": [
+                "resources/zagidb.sql", ]
         }
     )
 
