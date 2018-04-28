@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="0b23f99e-5a02-4840-906d-1578db7b70d1" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/helpers/job.py" beforeDir="false" afterPath="$PROJECT_DIR$/helpers/job.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -23,15 +22,28 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1079">
-              <caret line="103" column="37" selection-start-line="103" selection-start-column="37" selection-end-line="103" selection-end-column="37" />
+            <state relative-caret-position="149">
+              <caret line="171" column="13" selection-start-line="171" selection-start-column="13" selection-end-line="171" selection-end-column="13" />
               <folding>
                 <element signature="e#0#22#0" expanded="true" />
+                <element signature="e#98#3244#0" />
                 <element signature="e#3902#5023#0" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="96">
+                <caret line="7" column="71" selection-start-line="7" selection-start-column="71" selection-end-line="7" selection-end-column="71" />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
@@ -96,6 +108,7 @@
         <option value="$PROJECT_DIR$/resources/zagiidw.sql" />
         <option value="$PROJECT_DIR$/helpers/job.py" />
         <option value="$PROJECT_DIR$/main.py" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -518,7 +531,14 @@
       <option name="project" value="LOCAL" />
       <updated>1524903937291</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="parameterizing sql scripts for tbl creation">
+      <created>1524905780469</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1524905780469</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TodoView">
@@ -532,15 +552,16 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1440" height="878" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3290653" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50143063" side_tool="true" weight="0.29449424" />
       <window_info anchor="right" x="0" y="0" width="310" height="678" id="Documentation" order="5" sideWeight="0.3674776" side_tool="true" weight="0.1874106" />
       <window_info anchor="bottom" auto_hide="true" id="Version Control" order="7" weight="0.3277849" />
-      <window_info active="true" anchor="bottom" id="Python Console" order="8" sideWeight="0.49928468" visible="true" weight="0.33674777" />
+      <window_info anchor="bottom" id="Python Console" order="8" sideWeight="0.49928468" weight="0.33674777" />
       <window_info anchor="bottom" auto_hide="true" id="Run" order="2" weight="0.32010242" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.3290653" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6325224" visible="true" weight="0.21959943" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6325224" visible="true" weight="0.21959943" />
       <window_info anchor="right" id="R Packages" order="3" weight="0.3297568" />
       <window_info anchor="right" id="R Graphics" order="4" weight="0.3297568" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3290653" />
@@ -592,7 +613,6 @@
     <ignored-roots>
       <path value="$USER_HOME$" />
     </ignored-roots>
-    <MESSAGE value="tests for aws s3" />
     <MESSAGE value="tests for aws s3 competes" />
     <MESSAGE value="tests for aws redshift" />
     <MESSAGE value="bug fixes for aws*" />
@@ -617,7 +637,8 @@
     <MESSAGE value="major main method updates" />
     <MESSAGE value="job comments and main updates" />
     <MESSAGE value="main methods tested locally" />
-    <option name="LAST_COMMIT_MESSAGE" value="main methods tested locally" />
+    <MESSAGE value="parameterizing sql scripts for tbl creation" />
+    <option name="LAST_COMMIT_MESSAGE" value="parameterizing sql scripts for tbl creation" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -632,11 +653,6 @@
           <url>file://$PROJECT_DIR$/main.py</url>
           <line>128</line>
           <option name="timeStamp" value="70" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/main.py</url>
-          <line>75</line>
-          <option name="timeStamp" value="71" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -710,6 +726,7 @@
           <caret line="127" lean-forward="true" selection-start-line="127" selection-end-line="127" />
           <folding>
             <element signature="e#0#22#0" expanded="true" />
+            <element signature="e#98#3244#0" />
             <element signature="e#3902#5023#0" />
           </folding>
         </state>
@@ -741,6 +758,7 @@
           <caret line="27" selection-start-line="27" selection-end-line="27" />
           <folding>
             <element signature="e#0#22#0" expanded="true" />
+            <element signature="e#98#3244#0" />
             <element signature="e#3902#5023#0" />
           </folding>
         </state>
@@ -762,6 +780,7 @@
           <caret line="45" selection-start-line="45" selection-end-line="45" />
           <folding>
             <element signature="e#0#22#0" expanded="true" />
+            <element signature="e#98#3244#0" />
             <element signature="e#3902#5023#0" />
           </folding>
         </state>
@@ -1009,12 +1028,23 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1079">
-          <caret line="103" column="37" selection-start-line="103" selection-start-column="37" selection-end-line="103" selection-end-column="37" />
+        <state relative-caret-position="149">
+          <caret line="171" column="13" selection-start-line="171" selection-start-column="13" selection-end-line="171" selection-end-column="13" />
           <folding>
             <element signature="e#0#22#0" expanded="true" />
+            <element signature="e#98#3244#0" />
             <element signature="e#3902#5023#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="96">
+            <caret line="7" column="71" selection-start-line="7" selection-start-column="71" selection-end-line="7" selection-end-column="71" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
