@@ -19,8 +19,7 @@ pip install awscli
 
 The following is the policies that attached to my user at the time.
 
-![aws policies]
-(https://github.com/metinsenturk/ds530-project1/tree/making-reusable/resources/aws-policy.png)
+![aws policies](https://raw.githubusercontent.com/metinsenturk/ds530-project1/making-reusable/resources/aws-policy.png)
 
 If you already have them installed, you need to configure aws credentials.
 
@@ -28,8 +27,7 @@ If you already have them installed, you need to configure aws credentials.
 aws configure
 ```
 
-![aws configure]:
-(https://github.com/metinsenturk/ds530-project1/tree/making-reusable/resource/aws-configure.png)
+![aws configure](https://raw.githubusercontent.com/metinsenturk/ds530-project1/making-reusable/resources/aws-configure.png)
 
 This will pop up the following. The credentials you provide should have the following policies.
 
@@ -82,19 +80,15 @@ The following is the results I get at the time of my running.
 
 ### S3 Cluster
 
-![s3 zagi]:
-(https://github.com/metinsenturk/ds530-project1/tree/making-reusable/resource/s3-zagi.png)
+![s3 zagi](https://raw.githubusercontent.com/metinsenturk/ds530-project1/making-reusable/resources/s3-zagi.png)
 
 ### Redshift Cluster
 
-![redshift status]:
-(https://github.com/metinsenturk/ds530-project1/tree/making-reusable/resource/r.png)
+![redshift status](https://raw.githubusercontent.com/metinsenturk/ds530-project1/making-reusable/resources/r.png)
 ### Redshift Queries
 
-![redshift queries]:
-(https://github.com/metinsenturk/ds530-project1/tree/making-reusable/resource/r-queries.png)
+![redshift queries](https://raw.githubusercontent.com/metinsenturk/ds530-project1/making-reusable/resources/r-queries.png)
 
 ### Redshift Loads
 
-![redshift tables]:
-(https://github.com/metinsenturk/ds530-project1/tree/making-reusable/resource/r-tables.png)
+>![redshift loads](https://raw.githubusercontent.com/metinsenturk/ds530-project1/making-reusable/resources/r-tables.png)
