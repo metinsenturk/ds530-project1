@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0b23f99e-5a02-4840-906d-1578db7b70d1" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/aws-configure.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/aws-policy.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
@@ -40,8 +38,8 @@
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="943">
-                <caret line="98" column="17" selection-start-line="98" selection-start-column="17" selection-end-line="98" selection-end-column="17" />
+              <first_editor relative-caret-position="242">
+                <caret line="22" column="68" selection-start-line="22" selection-start-column="68" selection-end-line="22" selection-end-column="68" />
               </first_editor>
               <second_editor />
             </state>
@@ -536,7 +534,14 @@
       <option name="project" value="LOCAL" />
       <updated>1524906663303</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="readme detailed description added">
+      <created>1524944204611</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1524944204611</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TodoView">
@@ -611,7 +616,6 @@
     <ignored-roots>
       <path value="$USER_HOME$" />
     </ignored-roots>
-    <MESSAGE value="tests for aws redshift" />
     <MESSAGE value="bug fixes for aws*" />
     <MESSAGE value="updates" />
     <MESSAGE value="helper classes ready" />
@@ -636,7 +640,8 @@
     <MESSAGE value="main methods tested locally" />
     <MESSAGE value="parameterizing sql scripts for tbl creation" />
     <MESSAGE value="readme begin" />
-    <option name="LAST_COMMIT_MESSAGE" value="readme begin" />
+    <MESSAGE value="readme detailed description added" />
+    <option name="LAST_COMMIT_MESSAGE" value="readme detailed description added" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -1010,8 +1015,8 @@
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="943">
-            <caret line="98" column="17" selection-start-line="98" selection-start-column="17" selection-end-line="98" selection-end-column="17" />
+          <first_editor relative-caret-position="242">
+            <caret line="22" column="68" selection-start-line="22" selection-start-column="68" selection-end-line="22" selection-end-column="68" />
           </first_editor>
           <second_editor />
         </state>
