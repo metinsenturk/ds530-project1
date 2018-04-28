@@ -1,4 +1,31 @@
 class Job:
+    """ Object Type of this Class
+    job = Job(
+        purge=False,
+        s3={
+            "bucket_name": "",
+        },
+        redshift={
+            "cluster_identifier": "",
+            "cluster_name": "",
+            "master_username": "",
+            "master_password": "",
+            "dbname": ""
+        },
+        local={
+                "conn_info":
+                    {
+                        "user": "",
+                        "password": "",
+                        "host": "",
+                        "port": 0
+                    },
+                "databases": [
+                    "",
+                ]
+        }
+    )
+    """
     def __init__(self, purge, s3, redshift, local):
         self.purge = purge
         self.s3 = S3(
@@ -48,32 +75,3 @@ class ConnInfo(Local):
         self.password = password
         self.host = host
         self.port = port
-
-
-"""
-job = j.Job(
-    purge=False,
-    s3={
-        "bucket_name": "",
-    },
-    redshift={
-        "cluster_identifier": "",
-        "cluster_name": "",
-        "master_username": "",
-        "master_password": "",
-        "dbname": ""
-    },
-    local={
-            "conn_info":
-                {
-                    "user": "",
-                    "password": "",
-                    "host": "",
-                    "port": 0
-                },
-            "databases": [
-                "",
-            ]
-    }
-)
-"""

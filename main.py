@@ -18,34 +18,34 @@ def create(_job):
         # s3: init
         s3 = s.S3(bucket_name)
         s3.create_bucket(bucket_name)
-        print("connected to s3 bucket: %s" % bucket_name)
+        print("- connected to s3 bucket: %s" % bucket_name)
 
         # redshift: init
         redshift = r.Redshift()
         redshift.create_cluster(cluster_identifier, dbname, master_username, master_password)
-        print("redshift cluster initialized.")
+        print("- redshift cluster initialized.")
 
         # redshift: start of creation
         time_start = t.time()
-        print("redshift cluster creating: %d" % time_start)
+        print("- redshift cluster creating: %d" % time_start)
 
         # redshift: waiting for init
         redshift.waiter(cluster_identifier, 0)
-        print("redshift cluster initilalization completed.")
+        print("- redshift cluster initilalization completed.")
 
         # redshift: end of creation
         time_end = t.time()
-        print("redshift cluster creating: %d" % time_end)
+        print("- redshift cluster creating: %d" % time_end)
 
         # redshift: time of creation
-        print("waiting time for creation: %d secondes." % (time_end - time_start))
+        print("- waiting time for creation: %d secondes." % (time_end - time_start))
 
         # redshift: get cluster info
         cluster = redshift.describe_cluster(cluster_identifier)
-        print("redshift cluster: %s" % cluster_identifier)
+        print("- redshift cluster: %s" % cluster_identifier)
 
-        # from local to upload s3
-        for dbname in job.local.databases:
+        # operation
+        for dbname in _job.local.databases:
             # Local to S3 ==========================================
             # connect to db
             local = p.PSQL(dbname, 'localhost')
@@ -57,10 +57,13 @@ def create(_job):
             for table_name in table_list:
                 # write data to csv files
                 local.table_to_csv(table_name)
+                print("--- %s table saved as csv." % table_name)
 
                 # s3 upload
+                s3_path = '{}/{}.csv'.format(dbname, table_name)
                 file = open('{}.csv'.format(table_name), 'rb')
-                s3.put_object(file, '{}/{}.csv'.format(dbname, table_name))
+                s3.put_object(file, s3_path)
+                print("--- {} table uploaded to S3 as: {}.".format(table_name, s3_path))
 
             # close connection
             local.conn.close()
@@ -74,7 +77,7 @@ def create(_job):
                 master_username,
                 master_password
             )
-            print("---- connected to database: %s" % 'dev')
+            print("-- connected to database: %s" % 'dev')
 
             # create database
             databases = redshift_dev.get_databases()
@@ -92,12 +95,11 @@ def create(_job):
                 master_username,
                 master_password
             )
-
-            print("---- connected to database: %s" % dbname)
+            print("-- connected to database: %s" % dbname)
 
             # create db tables
             redshift_db.execute_file('resources/{}db.sql'.format(dbname))
-            print("---- tables created for: %s" % dbname)
+            print("-- tables created for: %s" % dbname)
 
             # get tables
             table_list = redshift_db.get_tables()
@@ -109,7 +111,7 @@ def create(_job):
 
                 # copy s3 to redshift
                 redshift_db.copy(table_name, s3_path)
-                print("---- data uploaded to: %s" % table_name)
+                print("--- data uploaded to: %s" % table_name)
 
             # close connection
             redshift_db.conn.close()
@@ -155,7 +157,7 @@ def purge(cluster_identifier, bucket_name):
         print("redshift cluster deleted: %d" % time_end)
 
         # time of deletion
-        print("waiting time for deletion: %d secondes."(time_end - time_start))
+        print("waiting time for deletion: %d secondes." % (time_end - time_start))
 
         print("good bye!")
     except Exception as e:
